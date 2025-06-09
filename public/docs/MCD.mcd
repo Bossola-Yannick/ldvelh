@@ -1,0 +1,10 @@
+USER: id, pseudo, mail, password
+CREER, 0N LS, 0N USER
+
+CREER2, 0N QG, 0N USER
+
+QG: id, pdv_start, pdv_act, exp, note, chapitre, equipement
+LS: id, hab, end, equipement, equipment-speciaux, or, repas, discipline_kai, discipline_kai_supp, chapitre
+
+
+

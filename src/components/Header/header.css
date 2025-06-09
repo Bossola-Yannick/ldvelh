@@ -1,0 +1,9 @@
+.header {
+  width: 100%;
+  height: 5rem;
+  background-color: #fadca7;
+}
+.title {
+  font-size: 2rem;
+  padding-top: 2rem;
+}

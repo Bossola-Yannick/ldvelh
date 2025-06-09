@@ -1,0 +1,15 @@
+.card {
+  width: 90%;
+  margin: 2rem auto;
+  height: 10rem;
+  background-image: url(../../../public/images/parcheminFini.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.card-name {
+  font-size: 2rem;
+  font-weight: 700;
+}
