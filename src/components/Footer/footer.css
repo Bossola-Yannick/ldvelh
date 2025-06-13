@@ -1,6 +1,8 @@
 .footer {
   height: 2rem;
-  background-color: #fadca7;
+  background-image: url(/images/parcheminFini.png);
+  background-position: center;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;

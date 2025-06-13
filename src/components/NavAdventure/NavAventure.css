@@ -1,0 +1,21 @@
+.nav {
+  display: flex;
+  justify-content: space-evenly;
+  background-image: url(/images/parcheminFini.png);
+  background-size: cover;
+  background-position: center;
+  height: 4rem;
+}
+.nav a {
+  background-color: var(--primary-color);
+  height: 3rem;
+  width: 4rem;
+  margin: auto;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.nav-link {
+  font-weight: 700;
+}
