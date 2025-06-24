@@ -2,6 +2,9 @@
   --primary-color: #b89b69;
   --secondary-color: #fadca7;
   --text-color: #000000;
+  /* police utilisé */
+  --text-font: "lato", sans-serif;
+  --title-font: "chewy", serif;
 }
 
 #root {
@@ -13,7 +16,9 @@
   text-align: center;
   background-color: var(--primary-color);
 }
-
+body {
+  font-family: var(--title-font);
+}
 .main {
   min-height: 90vh;
 }

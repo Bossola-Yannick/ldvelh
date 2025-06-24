@@ -1,16 +1,21 @@
 import React from "react";
-import { UsePersistedState } from "../hooks/usePersistedState";
+import { Routes, Route } from "react-router-dom";
+import DfPerso from "./defiFantastiquePerso";
+import DfNotes from "./defiFantastiqueNotes";
+import DfFight from "./defiFantastiqueFight";
+import DfNav from "../../components/NavAdventure/DfNav";
+import("./df-style.css");
 
 export function DefiFantastique() {
-  const [count, setCount] = UsePersistedState("count", 0);
   return (
     <>
-      <h1>DEFI-FANTASTIQUE</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+      <DfNav />
+      <h1 className="title">DEFI-FANTASTIQUE</h1>
+      <Routes>
+        <Route path="/" element={<DfPerso />} />
+        <Route path="/notes" element={<DfNotes />} />
+        <Route path="/combat" element={<DfFight />} />
+      </Routes>
     </>
   );
 }

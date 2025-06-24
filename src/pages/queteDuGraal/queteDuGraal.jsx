@@ -4,6 +4,8 @@ import QdGNav from "../../components/NavAdventure/QdGNav";
 import QdGPerso from "./queteDuGraalPerso";
 import QdGNotes from "./queteDuGraalNotes";
 import QdGFight from "./queteDuGraalFight";
+import("./qdg-style.css");
+
 export function QueteDuGraal() {
   return (
     <>

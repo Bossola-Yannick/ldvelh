@@ -147,3 +147,10 @@ body {
     background-color: #f9f9f9;
   }
 }
+
+/* ajout perso */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

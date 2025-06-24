@@ -1,0 +1,103 @@
+/*  Page Combat */
+.qdg-button-fight {
+  box-shadow: inset 0px 1px 0px 0px #f29c93;
+  background: linear-gradient(to bottom, #fe1a00 5%, #ce0100 100%);
+  background-color: #fe1a00;
+  border-radius: 6px;
+  border: 1px solid #d83526;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 400;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #b23e35;
+  height: 3rem;
+}
+.qdg-button-fight:hover {
+  background: linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
+  background-color: #ce0100;
+}
+.qdg-life-fighter {
+  display: flex;
+  margin-block: 1rem;
+}
+.qdg-life-fighter-box input {
+  height: 5rem;
+  width: 7rem;
+  text-align: center;
+  font-size: 3rem;
+  margin-block: 1rem;
+  font-weight: 700;
+}
+.qdg-dice-box {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-block: 1rem;
+}
+.qdg-result {
+  font-size: 1.5rem;
+}
+.qdg-result-title {
+  margin-block: 1rem;
+}
+.qdg-perso,
+.qdg-life-pts,
+.qdg-has-life {
+  font-size: 1.8rem;
+  color: brown;
+}
+/* Page Note et chapitre */
+.qdg-notes-title {
+  font-size: 1.6rem;
+}
+.qdg-notes {
+  width: 90%;
+  margin: 1rem auto;
+}
+.qdg-list {
+  width: 100%;
+  height: 1.5rem;
+  border-block: 1px solid black;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 0.3rem;
+  text-align: center;
+}
+.qdg-chapter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.qdg-chapter input {
+  margin: 1rem auto;
+  width: 9rem;
+  height: 5rem;
+  width: 7rem;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 700;
+}
+/*  page perso */
+.qdg-equipment {
+  width: 90%;
+  margin: 0 auto;
+}
+.qdg-title {
+  font-size: 1.5rem;
+}
+.qdg-stats {
+  display: flex;
+  justify-content: space-around;
+}
+.qdg-stat {
+  width: 30%;
+}
+.qdg-stat input {
+  width: 100%;
+  height: 4rem;
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+}

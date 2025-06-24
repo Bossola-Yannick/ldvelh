@@ -4,31 +4,28 @@ import Button from "../../components/Button/button";
 export default function LsFight() {
   return (
     <>
-      <div className="quot">
-        <p className="quot-text">
-          Quotient d'Attaque : <span className="quot-value">9</span>
+      <div className="ls-quot">
+        <p className="ls-quot-text">
+          Quotient d'Attaque : <span className="ls-quot-value">9</span>
         </p>
       </div>
-      <div className="habiliti-fight">
-        <div className="hability-fight-box">
-          <label htmlFor="hability-fight-ls">Habilité LS</label>
-          <input
-            type="number"
-            name="hability-fight-ls"
-            id="hability-fight-ls"
-          />
+      <div className="ls-ability-fight">
+        <div className="ls-ability-fight-box">
+          <label htmlFor="ability-fight-ls">Habilité LS</label>
+          <input type="number" name="ability-fight-ls" id="ability-fight-ls" />
         </div>
-        <div className="hability-fight-box">
-          <label htmlFor="hability-fight-ennemy">Habilité ennemi</label>
+        <div className="ls-ability-fight-box">
+          <label htmlFor="ability-fight-ennemy">Habilité ennemi</label>
           <input
+            className="stat-ennemy"
             type="number"
-            name="hability-fight-ennemy"
-            id="hability-fight-ennemy"
+            name="ability-fight-ennemy"
+            id="ability-fight-ennemy"
           />
         </div>
       </div>
-      <div className="endurace-fight">
-        <div className="endurance-fight-box">
+      <div className="ls-endurance-fight">
+        <div className="ls-endurance-fight-box">
           <label htmlFor="endurance-fight-ls">Endurance LS</label>
           <input
             type="number"
@@ -36,19 +33,27 @@ export default function LsFight() {
             id="endurance-fight-ls"
           />
         </div>
-        <div className="endurance-fight-box">
+        <div className="ls-endurance-fight-box">
           <label htmlFor="endurance-fight-ennemy">Endurance ennemi</label>
           <input
+            className="stat-ennemy"
             type="number"
             name="endurance-fight-ennemy"
             id="endurance-fight-ennemy"
           />
         </div>
       </div>
-      <Button>Combat</Button>
-      <div className="result-Fight">
-        <label htmlFor="result">Résultat de Combat</label>
-        <input type="text" name="result" id="result" />
+      <Button className={"button-fight"}>Combat</Button>
+      {/* <p className="ls-result">Résultat de Combat</p> */}
+      <div className="result-text">
+        <div className="ls-result-fight">
+          <label htmlFor="result-ls">LS</label>
+          <input type="text" name="result-ls" id="result-ls" />
+        </div>
+        <div className="ls-result-fight">
+          <label htmlFor="result-ennemy">Ennemy</label>
+          <input type="text" name="result-ennemy" id="result-ennemy" />
+        </div>
       </div>
     </>
   );

@@ -1,5 +1,4 @@
 import React from "react";
-// import { UsePersistedState } from "../../hooks/usePersistedState";
 import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -8,6 +7,7 @@ import LsEquipment from "./loupSolitaireEquipement";
 import LsNav from "../../components/NavAdventure/LsNAv";
 import LsNotes from "./loupSolitaireNotes";
 import LsFight from "./loupSolitaireFight";
+import("./ls-style.css");
 
 export function LoupSolitaire() {
   return (
