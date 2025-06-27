@@ -1,4 +1,3 @@
-import React from "react";
 import { UsePersistedState } from "../../hooks/usePersistedState";
 import { handleInputChange } from "../../utils/handleInputChange";
 export default function LsNotes() {

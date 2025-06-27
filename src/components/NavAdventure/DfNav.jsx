@@ -14,6 +14,9 @@ export default function DfNav() {
       <Link to="/defi-fantastique/combat">
         <p className="nav-link">Combat</p>
       </Link>
+      <Link to="/defi-fantastique/hasard">
+        <p className="nav-link">Hasard</p>
+      </Link>
     </div>
   );
 }

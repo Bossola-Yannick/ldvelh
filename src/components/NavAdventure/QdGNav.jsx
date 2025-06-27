@@ -14,6 +14,9 @@ export default function QdGNav() {
       <Link to="/quete-du-graal/combat">
         <p className="nav-link">Combat</p>
       </Link>
+      <Link to="/quete-du-graal/hasard">
+        <p className="nav-link">Hasard</p>
+      </Link>
     </div>
   );
 }

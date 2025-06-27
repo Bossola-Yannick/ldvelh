@@ -5,7 +5,7 @@ import { LoupSolitaire } from "./pages/loupSolitaire/loupSolitaire";
 import { DefiFantastique } from "./pages/defiFantastique/defiFantastique";
 import { QueteDuGraal } from "./pages/queteDuGraal/queteDuGraal";
 import Header from "./components/Header/header";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (

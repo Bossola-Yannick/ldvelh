@@ -1,6 +1,3 @@
-import React from "react";
-import LsNav from "../../components/NavAdventure/LsNAv";
-
 export default function QdGPerso() {
   return (
     <>

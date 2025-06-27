@@ -4,6 +4,7 @@ import DfPerso from "./defiFantastiquePerso";
 import DfNotes from "./defiFantastiqueNotes";
 import DfFight from "./defiFantastiqueFight";
 import DfNav from "../../components/NavAdventure/DfNav";
+import DfHasard from "./defiFantastiqueHasard";
 import("./df-style.css");
 
 export function DefiFantastique() {
@@ -15,6 +16,7 @@ export function DefiFantastique() {
         <Route path="/" element={<DfPerso />} />
         <Route path="/notes" element={<DfNotes />} />
         <Route path="/combat" element={<DfFight />} />
+        <Route path="/hasard" element={<DfHasard />} />
       </Routes>
     </>
   );

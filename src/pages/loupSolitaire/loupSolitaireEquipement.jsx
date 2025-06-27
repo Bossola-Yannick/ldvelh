@@ -1,4 +1,3 @@
-import React from "react";
 import { UsePersistedState } from "../../hooks/usePersistedState";
 import { handleInputChange } from "../../utils/handleInputChange";
 
@@ -47,10 +46,11 @@ export default function LsEquipment() {
             value={weapon1}
             onChange={handleInputChange(setWeapon1, "text")}
           />
+          {/* A VOIR SI JE LAISSE OU PAS
           <div className="ls-maitrise">
             <label htmlFor="maitrise">Maitrise d'arme</label>
             <input type="checkbox" name="maitrise" id="maitrise-one" />
-          </div>
+          </div> */}
         </div>
         <div className="ls-arme">
           <label htmlFor="arme2">Arme 2</label>
@@ -61,10 +61,11 @@ export default function LsEquipment() {
             value={weapon2}
             onChange={handleInputChange(setWeapon2, "text")}
           />
+          {/* A VOIR SI JE LAISSE OU PAS
           <div className="ls-maitrise">
             <label htmlFor="maitrise">Maitrise d'arme</label>
             <input type="checkbox" name="maitrise" id="maitrise-two" />
-          </div>
+          </div> */}
         </div>
       </div>
       {renderBagItem("Sac à Dos", bagItem, "bag")}

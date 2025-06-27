@@ -17,6 +17,9 @@ export default function LsNav() {
       <Link to="/loup-solitaire/combat">
         <p className="nav-link">Combat</p>
       </Link>
+      <Link to="/loup-solitaire/hasard">
+        <p className="nav-link">Hasard</p>
+      </Link>
     </div>
   );
 }

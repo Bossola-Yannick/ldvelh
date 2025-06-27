@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "../../components/Button/button";
 import { UsePersistedState } from "../../hooks/usePersistedState";
 import { handleInputChange } from "../../utils/handleInputChange";
@@ -14,10 +13,200 @@ export default function LsFight() {
   );
   const [quotAttak, setQuotAttak] = UsePersistedState("ls-quotient-attaque", 0);
 
+  //!voici la base du code pour gérer le cicle de combat
+  // mise en tableau des quotient d'attaque
+  const quotients = [
+    -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+    10, 11,
+  ];
+
+  // mise en tablea de la Table des coups
+  const tableCoups = [
+    //* hasard 1
+    [
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "-8" },
+      { E: "-0", LS: "-6" },
+      { E: "-1", LS: "-6" },
+      { E: "-2", LS: "-5" },
+      { E: "-3", LS: "-5" },
+      { E: "-4", LS: "-5" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-4" },
+      { E: "-7", LS: "-4" },
+      { E: "-8", LS: "-3" },
+      { E: "-9", LS: "-3" },
+    ],
+    // *hasard 2
+    [
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "-8" },
+      { E: "-0", LS: "-7" },
+      { E: "-1", LS: "-6" },
+      { E: "-2", LS: "-5" },
+      { E: "-3", LS: "-5" },
+      { E: "-4", LS: "-4" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-3" },
+      { E: "-7", LS: "-3" },
+      { E: "-8", LS: "-3" },
+      { E: "-9", LS: "-3" },
+      { E: "-10", LS: "-2" },
+    ],
+    // *hasard 3
+    [
+      { E: "-0", LS: "-8" },
+      { E: "-0", LS: "-7" },
+      { E: "-1", LS: "-86" },
+      { E: "-2", LS: "-5" },
+      { E: "-3", LS: "-5" },
+      { E: "-4", LS: "-4" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-3" },
+      { E: "-7", LS: "-3" },
+      { E: "-8", LS: "-3" },
+      { E: "-9", LS: "-2" },
+      { E: "-10", LS: "-2" },
+      { E: "-11", LS: "-2" },
+    ],
+    //todo=>
+    // *hasard 4
+    [
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "-8" },
+      { E: "-0", LS: "-6" },
+      { E: "-1", LS: "-6" },
+      { E: "-2", LS: "-5" },
+      { E: "-3", LS: "-5" },
+      { E: "-4", LS: "-5" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-4" },
+      { E: "-7", LS: "-4" },
+      { E: "-8", LS: "-3" },
+      { E: "-9", LS: "-3" },
+    ],
+    // *hasard 5
+    [
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "-8" },
+      { E: "-0", LS: "-6" },
+      { E: "-1", LS: "-6" },
+      { E: "-2", LS: "-5" },
+      { E: "-3", LS: "-5" },
+      { E: "-4", LS: "-5" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-4" },
+      { E: "-7", LS: "-4" },
+      { E: "-8", LS: "-3" },
+      { E: "-9", LS: "-3" },
+    ],
+    // *hasard 6
+    [
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "-8" },
+      { E: "-0", LS: "-6" },
+      { E: "-1", LS: "-6" },
+      { E: "-2", LS: "-5" },
+      { E: "-3", LS: "-5" },
+      { E: "-4", LS: "-5" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-4" },
+      { E: "-7", LS: "-4" },
+      { E: "-8", LS: "-3" },
+      { E: "-9", LS: "-3" },
+    ],
+    // *hasard 7
+    [
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "-8" },
+      { E: "-0", LS: "-6" },
+      { E: "-1", LS: "-6" },
+      { E: "-2", LS: "-5" },
+      { E: "-3", LS: "-5" },
+      { E: "-4", LS: "-5" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-4" },
+      { E: "-7", LS: "-4" },
+      { E: "-8", LS: "-3" },
+      { E: "-9", LS: "-3" },
+    ],
+    // *hasard 8
+    [
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "-8" },
+      { E: "-0", LS: "-6" },
+      { E: "-1", LS: "-6" },
+      { E: "-2", LS: "-5" },
+      { E: "-3", LS: "-5" },
+      { E: "-4", LS: "-5" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-4" },
+      { E: "-7", LS: "-4" },
+      { E: "-8", LS: "-3" },
+      { E: "-9", LS: "-3" },
+    ],
+    // *hasard 9
+    [
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "-8" },
+      { E: "-0", LS: "-6" },
+      { E: "-1", LS: "-6" },
+      { E: "-2", LS: "-5" },
+      { E: "-3", LS: "-5" },
+      { E: "-4", LS: "-5" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-4" },
+      { E: "-7", LS: "-4" },
+      { E: "-8", LS: "-3" },
+      { E: "-9", LS: "-3" },
+    ],
+    // *hasard 0
+    [
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "-8" },
+      { E: "-0", LS: "-6" },
+      { E: "-1", LS: "-6" },
+      { E: "-2", LS: "-5" },
+      { E: "-3", LS: "-5" },
+      { E: "-4", LS: "-5" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-4" },
+      { E: "-7", LS: "-4" },
+      { E: "-8", LS: "-3" },
+      { E: "-9", LS: "-3" },
+    ],
+  ];
+
+  //* Fonction pour obtenir le résultat
+  // function getResult(hasard, quotient) {
+  //*    Clamp quotient entre -11 et 11
+  //   if (quotient < -11) quotient = -11;
+  //   if (quotient > 11) quotient = 11;
+
+  //   const colIndex = quotients.indexOf(quotient);
+  //   return tableCoups[hasard][colIndex]; // retourne un objet { E: ..., LS: ... }
+  // }
+
+  //* Exemple d'appel
+  // const result = getResult(3, -5); // Suppose que le hasard est 3 et quotient -5
+  // console.log("Dégâts à l'ennemi :", result.E);
+  // console.log("Dégâts au Loup Solitaire :", result.LS);
+  //!fin du cicle de combat
+
   // calcul du quotien d'attaque
   useEffect(() => {
     setQuotAttak(lsAbility - enemyAbility);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lsAbility, enemyAbility]);
+
   return (
     <>
       <div className="ls-quot">
