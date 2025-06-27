@@ -1,18 +1,41 @@
 import React from "react";
 import Button from "../../components/Button/button";
+import { UsePersistedState } from "../../hooks/usePersistedState";
+import { handleInputChange } from "../../utils/handleInputChange";
+import { useEffect } from "react";
 
 export default function LsFight() {
+  const [lsAbility, setLsAbility] = UsePersistedState("ls-ability", 0);
+  const [enemyAbility, setEnemyAbility] = UsePersistedState("enemy-ability", 0);
+  const [endurance, setEndurance] = UsePersistedState("ls-endurance", 0);
+  const [enemyEndurance, setEnemyEndurance] = UsePersistedState(
+    "enemy-endurance",
+    0
+  );
+  const [quotAttak, setQuotAttak] = UsePersistedState("ls-quotient-attaque", 0);
+
+  // calcul du quotien d'attaque
+  useEffect(() => {
+    setQuotAttak(lsAbility - enemyAbility);
+  }, [lsAbility, enemyAbility]);
   return (
     <>
       <div className="ls-quot">
         <p className="ls-quot-text">
-          Quotient d'Attaque : <span className="ls-quot-value">9</span>
+          Quotient d'Attaque :{" "}
+          <span className="ls-quot-value">{quotAttak}</span>
         </p>
       </div>
       <div className="ls-ability-fight">
         <div className="ls-ability-fight-box">
           <label htmlFor="ability-fight-ls">Habilité LS</label>
-          <input type="number" name="ability-fight-ls" id="ability-fight-ls" />
+          <input
+            type="number"
+            name="ability-fight-ls"
+            id="ability-fight-ls"
+            value={lsAbility}
+            onChange={handleInputChange(setLsAbility, "number")}
+          />
         </div>
         <div className="ls-ability-fight-box">
           <label htmlFor="ability-fight-ennemy">Habilité ennemi</label>
@@ -21,6 +44,8 @@ export default function LsFight() {
             type="number"
             name="ability-fight-ennemy"
             id="ability-fight-ennemy"
+            value={enemyAbility}
+            onChange={handleInputChange(setEnemyAbility, "number")}
           />
         </div>
       </div>
@@ -31,6 +56,8 @@ export default function LsFight() {
             type="number"
             name="endurance-fight-ls"
             id="endurance-fight-ls"
+            value={endurance}
+            onChange={handleInputChange(setEndurance, "number")}
           />
         </div>
         <div className="ls-endurance-fight-box">
@@ -40,20 +67,25 @@ export default function LsFight() {
             type="number"
             name="endurance-fight-ennemy"
             id="endurance-fight-ennemy"
+            value={enemyEndurance}
+            onChange={handleInputChange(setEnemyEndurance, "number")}
           />
         </div>
       </div>
       <Button className={"button-fight"}>Combat</Button>
-      {/* <p className="ls-result">Résultat de Combat</p> */}
-      <div className="result-text">
-        <div className="ls-result-fight">
-          <label htmlFor="result-ls">LS</label>
-          <input type="text" name="result-ls" id="result-ls" />
-        </div>
-        <div className="ls-result-fight">
-          <label htmlFor="result-ennemy">Ennemy</label>
-          <input type="text" name="result-ennemy" id="result-ennemy" />
-        </div>
+      <p className="ls-result">Résultat de Combat</p>
+      <div className="ls-result-fight">
+        <p className="ls-result">
+          - <span className="ls-perso">LS </span>
+          perd <span className="ls-life-pts">5</span> pts de vie .
+        </p>
+        <p className="ls-result">
+          - Il lui reste <span className="ls-has-life">12</span> pts de vie !
+        </p>
+        <p className="ls-result">
+          - <span className="ls-perso">ennemi </span>
+          perd <span className="ls-life-pts">7</span> pts de vie .
+        </p>
       </div>
     </>
   );

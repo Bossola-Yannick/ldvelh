@@ -67,6 +67,26 @@ input {
 .ls-notes-title {
   font-size: 1.6rem;
 }
+.ls-notes li {
+  position: relative;
+  margin-block: 1rem;
+}
+.ls-delete-note {
+  position: absolute;
+  background-color: red;
+  padding: 0.3rem;
+  border-radius: 50%;
+  top: -0.9rem;
+  right: -0.5rem;
+  cursor: pointer;
+}
+.ls-note-button {
+  background-image: url(../../../public/images/parcheminFini.png);
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+  margin-block: 1rem;
+}
 .ls-quot {
   font-size: 1.6rem;
   margin-bottom: 1rem;
@@ -109,14 +129,11 @@ input {
   background: linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
   background-color: #ce0100;
 }
-.result-text {
-  display: flex;
-  justify-content: space-around;
-  gap: 1rem;
-}
-.result-text input {
-  height: 5rem;
-  width: 5rem;
+.ls-perso,
+.ls-life-pts,
+.ls-has-life {
+  font-size: 1.8rem;
+  color: brown;
 }
 .ls-result {
   margin-block: 1rem;

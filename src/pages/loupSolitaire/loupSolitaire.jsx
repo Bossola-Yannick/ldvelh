@@ -1,7 +1,5 @@
 import React from "react";
-import Header from "../../components/Header/header";
-import Footer from "../../components/Footer/footer";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import LsPerso from "./loupSolitairePerso";
 import LsEquipment from "./loupSolitaireEquipement";
 import LsNav from "../../components/NavAdventure/LsNAv";

@@ -1,3 +1,5 @@
+//  * Ceci est le getteur et setteur pour pouvoir faire appel aux valeur dans le localStorage
+
 export function setItem(key, value) {
   try {
     window.localStorage.setItem(key, JSON.stringify(value));
@@ -9,8 +11,10 @@ export function setItem(key, value) {
 export function getItem(key) {
   try {
     const item = window.localStorage.getItem(key);
-    return item ? JSON.parse(item) : undefined;
+    if (item === null || item === undefined) return 0;
+    return JSON.parse(item);
   } catch (error) {
     console.log(error);
+    return 0;
   }
 }

@@ -1,12 +1,52 @@
 import React from "react";
+import { UsePersistedState } from "../../hooks/usePersistedState";
+import { handleInputChange } from "../../utils/handleInputChange";
 
 export default function LsEquipment() {
+  const [weapon1, setWeapon1] = UsePersistedState("weapon-one", "***");
+  const [weapon2, setWeapon2] = UsePersistedState("weapon-two", "***");
+
+  // mise en place du sac à dos
+  const bagItem = Array.from({ length: 8 }, (_, i) =>
+    UsePersistedState(`ls-bag-item${i + 1}`, "***")
+  );
+
+  // mise en place du sac d'objet spéciaux
+  const specialBagItem = Array.from({ length: 8 }, (_, i) =>
+    UsePersistedState(`ls-special-bag-item${i + 1}`, "***")
+  );
+
+  // fonction du rendu des sacs
+  const renderBagItem = (title, items, baseName) => (
+    <div className="ls-bag">
+      <h5 className="ls-title">{title}</h5>
+      <ul>
+        {items.map(([value, setter], index) => (
+          <li key={`${baseName}-${index}`}>
+            <input
+              className="ls-list"
+              type="text"
+              name={`${baseName}-${index + 1}`}
+              value={value}
+              onChange={handleInputChange(setter, "text")}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
   return (
     <>
       <div className="ls-armes">
         <div className="ls-arme">
           <label htmlFor="arme1">Arme 1</label>
-          <input type="text" name="arme1" id="arme1" />
+          <input
+            type="text"
+            name="arme1"
+            id="arme1"
+            value={weapon1}
+            onChange={handleInputChange(setWeapon1, "text")}
+          />
           <div className="ls-maitrise">
             <label htmlFor="maitrise">Maitrise d'arme</label>
             <input type="checkbox" name="maitrise" id="maitrise-one" />
@@ -14,74 +54,21 @@ export default function LsEquipment() {
         </div>
         <div className="ls-arme">
           <label htmlFor="arme2">Arme 2</label>
-          <input type="text" name="arme2" id="arme2" />
+          <input
+            type="text"
+            name="arme2"
+            id="arme2"
+            value={weapon2}
+            onChange={handleInputChange(setWeapon2, "text")}
+          />
           <div className="ls-maitrise">
             <label htmlFor="maitrise">Maitrise d'arme</label>
             <input type="checkbox" name="maitrise" id="maitrise-two" />
           </div>
         </div>
       </div>
-      <div className="ls-bag">
-        <h5 className="ls-title">Sac à Dos</h5>
-        <ul>
-          <li>
-            <input className="ls-list" type="text" name="kai-1" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-2" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-3" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-4" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-5" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-6" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-1" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-2" id="" />
-          </li>
-        </ul>
-      </div>
-      <div className="ls-special-bag">
-        <h5 className="ls-title">Objets Spéciaux</h5>
-        <ul>
-          <li>
-            <input className="ls-list" type="text" name="kai-1" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-2" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-3" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-4" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-5" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-6" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-4" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-5" id="" />
-          </li>
-          <li>
-            <input className="ls-list" type="text" name="kai-6" id="" />
-          </li>
-        </ul>
-      </div>
+      {renderBagItem("Sac à Dos", bagItem, "bag")}
+      {renderBagItem("Objets Spéciaux", specialBagItem, "specialBag")}
     </>
   );
 }
