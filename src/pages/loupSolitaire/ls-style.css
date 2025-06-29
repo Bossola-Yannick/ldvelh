@@ -130,6 +130,9 @@ input {
   background: linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
   background-color: #ce0100;
 }
+.button-fight-hidden {
+  display: none;
+}
 .ls-perso,
 .ls-life-pts,
 .ls-has-life {

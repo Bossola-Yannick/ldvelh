@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Button from "../../components/Button/button";
 import { UsePersistedState } from "../../hooks/usePersistedState";
 import { handleInputChange } from "../../utils/handleInputChange";
@@ -6,13 +7,14 @@ import { useEffect } from "react";
 export default function LsFight() {
   const [lsAbility, setLsAbility] = UsePersistedState("ls-ability", 0);
   const [enemyAbility, setEnemyAbility] = UsePersistedState("enemy-ability", 0);
-  const [endurance, setEndurance] = UsePersistedState("ls-endurance", 0);
+  const [lsEndurance, setLsEndurance] = UsePersistedState("ls-endurance", 0);
   const [enemyEndurance, setEnemyEndurance] = UsePersistedState(
     "enemy-endurance",
     0
   );
   const [quotAttak, setQuotAttak] = UsePersistedState("ls-quotient-attaque", 0);
-
+  const [resultFight, setResultFight] = UsePersistedState("resultFight", {});
+  const [fight, setFight] = useState(true);
   //!voici la base du code pour gérer le cicle de combat
   // mise en tableau des quotient d'attaque
   const quotients = [
@@ -22,19 +24,55 @@ export default function LsFight() {
 
   // mise en tablea de la Table des coups
   const tableCoups = [
+    // *hasard 0
+    [
+      { E: "-6", LS: "-0" },
+      { E: "-7", LS: "-0" },
+      { E: "-7", LS: "-0" },
+      { E: "-8", LS: "-0" },
+      { E: "-8", LS: "-0" },
+      { E: "-9", LS: "-0" },
+      { E: "-9", LS: "-0" },
+      { E: "-10", LS: "-0" },
+      { E: "-10", LS: "-0" },
+      { E: "-11", LS: "-0" },
+      { E: "-11", LS: "-0" },
+      { E: "-12", LS: "-0" },
+      { E: "-14", LS: "-0" },
+      { E: "-14", LS: "-0" },
+      { E: "-16", LS: "-0" },
+      { E: "-16", LS: "-0" },
+      { E: "-18", LS: "-0" },
+      { E: "-18", LS: "-0" },
+      { E: "T", LS: "-0" },
+      { E: "T", LS: "-0" },
+      { E: "T", LS: "-0" },
+      { E: "T", LS: "-0" },
+      { E: "T", LS: "-0" },
+    ],
     //* hasard 1
     [
       { E: "-0", LS: "T" },
       { E: "-0", LS: "T" },
+      { E: "-0", LS: "T" },
+      { E: "-0", LS: "-8" },
       { E: "-0", LS: "-8" },
       { E: "-0", LS: "-6" },
+      { E: "-0", LS: "-6" },
       { E: "-1", LS: "-6" },
+      { E: "-1", LS: "-6" },
+      { E: "-2", LS: "-5" },
       { E: "-2", LS: "-5" },
       { E: "-3", LS: "-5" },
       { E: "-4", LS: "-5" },
+      { E: "-4", LS: "-5" },
+      { E: "-5", LS: "-4" },
       { E: "-5", LS: "-4" },
       { E: "-6", LS: "-4" },
+      { E: "-6", LS: "-4" },
       { E: "-7", LS: "-4" },
+      { E: "-7", LS: "-4" },
+      { E: "-8", LS: "-3" },
       { E: "-8", LS: "-3" },
       { E: "-9", LS: "-3" },
     ],
@@ -42,15 +80,25 @@ export default function LsFight() {
     [
       { E: "-0", LS: "T" },
       { E: "-0", LS: "-8" },
+      { E: "-0", LS: "-8" },
+      { E: "-0", LS: "-7" },
       { E: "-0", LS: "-7" },
       { E: "-1", LS: "-6" },
+      { E: "-1", LS: "-6" },
       { E: "-2", LS: "-5" },
+      { E: "-2", LS: "-5" },
+      { E: "-3", LS: "-5" },
       { E: "-3", LS: "-5" },
       { E: "-4", LS: "-4" },
       { E: "-5", LS: "-4" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-3" },
       { E: "-6", LS: "-3" },
       { E: "-7", LS: "-3" },
+      { E: "-7", LS: "-3" },
       { E: "-8", LS: "-3" },
+      { E: "-8", LS: "-3" },
+      { E: "-9", LS: "-3" },
       { E: "-9", LS: "-3" },
       { E: "-10", LS: "-2" },
     ],
@@ -58,154 +106,220 @@ export default function LsFight() {
     [
       { E: "-0", LS: "-8" },
       { E: "-0", LS: "-7" },
-      { E: "-1", LS: "-86" },
+      { E: "-0", LS: "-7" },
+      { E: "-1", LS: "-6" },
+      { E: "-1", LS: "-6" },
+      { E: "-2", LS: "-5" },
       { E: "-2", LS: "-5" },
       { E: "-3", LS: "-5" },
+      { E: "-3", LS: "-5" },
+      { E: "-4", LS: "-4" },
       { E: "-4", LS: "-4" },
       { E: "-5", LS: "-4" },
       { E: "-6", LS: "-3" },
+      { E: "-6", LS: "-3" },
+      { E: "-7", LS: "-3" },
       { E: "-7", LS: "-3" },
       { E: "-8", LS: "-3" },
+      { E: "-8", LS: "-3" },
       { E: "-9", LS: "-2" },
+      { E: "-9", LS: "-2" },
+      { E: "-10", LS: "-2" },
       { E: "-10", LS: "-2" },
       { E: "-11", LS: "-2" },
     ],
-    //todo=>
     // *hasard 4
     [
-      { E: "-0", LS: "T" },
-      { E: "-0", LS: "T" },
       { E: "-0", LS: "-8" },
-      { E: "-0", LS: "-6" },
-      { E: "-1", LS: "-6" },
-      { E: "-2", LS: "-5" },
+      { E: "-1", LS: "-7" },
+      { E: "-1", LS: "-7" },
+      { E: "-2", LS: "-6" },
+      { E: "-2", LS: "-6" },
       { E: "-3", LS: "-5" },
-      { E: "-4", LS: "-5" },
+      { E: "-3", LS: "-5" },
+      { E: "-4", LS: "-4" },
+      { E: "-4", LS: "-4" },
       { E: "-5", LS: "-4" },
-      { E: "-6", LS: "-4" },
-      { E: "-7", LS: "-4" },
-      { E: "-8", LS: "-3" },
-      { E: "-9", LS: "-3" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-3" },
+      { E: "-7", LS: "-3" },
+      { E: "-7", LS: "-3" },
+      { E: "-8", LS: "-2" },
+      { E: "-8", LS: "-2" },
+      { E: "-9", LS: "-2" },
+      { E: "-9", LS: "-2" },
+      { E: "-10", LS: "-2" },
+      { E: "-10", LS: "-2" },
+      { E: "-11", LS: "-2" },
+      { E: "-11", LS: "-2" },
+      { E: "-12", LS: "-2" },
     ],
     // *hasard 5
     [
-      { E: "-0", LS: "T" },
-      { E: "-0", LS: "T" },
-      { E: "-0", LS: "-8" },
-      { E: "-0", LS: "-6" },
-      { E: "-1", LS: "-6" },
-      { E: "-2", LS: "-5" },
+      { E: "-1", LS: "-7" },
+      { E: "-2", LS: "-6" },
+      { E: "-2", LS: "-6" },
       { E: "-3", LS: "-5" },
-      { E: "-4", LS: "-5" },
+      { E: "-3", LS: "-5" },
+      { E: "-4", LS: "-4" },
+      { E: "-4", LS: "-4" },
       { E: "-5", LS: "-4" },
-      { E: "-6", LS: "-4" },
-      { E: "-7", LS: "-4" },
-      { E: "-8", LS: "-3" },
-      { E: "-9", LS: "-3" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-3" },
+      { E: "-6", LS: "-3" },
+      { E: "-7", LS: "-2" },
+      { E: "-8", LS: "-2" },
+      { E: "-8", LS: "-2" },
+      { E: "-9", LS: "-2" },
+      { E: "-9", LS: "-2" },
+      { E: "-10", LS: "-2" },
+      { E: "-10", LS: "-2" },
+      { E: "-11", LS: "-2" },
+      { E: "-11", LS: "-2" },
+      { E: "-12", LS: "-2" },
+      { E: "-12", LS: "-2" },
+      { E: "-14", LS: "-1" },
     ],
     // *hasard 6
     [
-      { E: "-0", LS: "T" },
-      { E: "-0", LS: "T" },
-      { E: "-0", LS: "-8" },
-      { E: "-0", LS: "-6" },
-      { E: "-1", LS: "-6" },
-      { E: "-2", LS: "-5" },
-      { E: "-3", LS: "-5" },
+      { E: "-2", LS: "-6" },
+      { E: "-3", LS: "-6" },
+      { E: "-3", LS: "-6" },
+      { E: "-4", LS: "-5" },
       { E: "-4", LS: "-5" },
       { E: "-5", LS: "-4" },
-      { E: "-6", LS: "-4" },
-      { E: "-7", LS: "-4" },
-      { E: "-8", LS: "-3" },
-      { E: "-9", LS: "-3" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-3" },
+      { E: "-6", LS: "-3" },
+      { E: "-7", LS: "-2" },
+      { E: "-7", LS: "-2" },
+      { E: "-8", LS: "-2" },
+      { E: "-9", LS: "-2" },
+      { E: "-9", LS: "-2" },
+      { E: "-10", LS: "-2" },
+      { E: "-10", LS: "-2" },
+      { E: "-11", LS: "-1" },
+      { E: "-11", LS: "-1" },
+      { E: "-12", LS: "-1" },
+      { E: "-12", LS: "-1" },
+      { E: "-14", LS: "-1" },
+      { E: "-14", LS: "-1" },
+      { E: "-16", LS: "-1" },
     ],
     // *hasard 7
     [
-      { E: "-0", LS: "T" },
-      { E: "-0", LS: "T" },
-      { E: "-0", LS: "-8" },
-      { E: "-0", LS: "-6" },
-      { E: "-1", LS: "-6" },
-      { E: "-2", LS: "-5" },
       { E: "-3", LS: "-5" },
       { E: "-4", LS: "-5" },
+      { E: "-4", LS: "-5" },
       { E: "-5", LS: "-4" },
-      { E: "-6", LS: "-4" },
-      { E: "-7", LS: "-4" },
-      { E: "-8", LS: "-3" },
-      { E: "-9", LS: "-3" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-3" },
+      { E: "-6", LS: "-3" },
+      { E: "-7", LS: "-2" },
+      { E: "-7", LS: "-2" },
+      { E: "-8", LS: "-2" },
+      { E: "-8", LS: "-2" },
+      { E: "-9", LS: "-1" },
+      { E: "-10", LS: "-1" },
+      { E: "-10", LS: "-1" },
+      { E: "-11", LS: "-1" },
+      { E: "-11", LS: "-1" },
+      { E: "-12", LS: "-0" },
+      { E: "-12", LS: "-0" },
+      { E: "-14", LS: "-0" },
+      { E: "-14", LS: "-0" },
+      { E: "-16", LS: "-0" },
+      { E: "-16", LS: "-0" },
+      { E: "-18", LS: "-0" },
     ],
     // *hasard 8
     [
-      { E: "-0", LS: "T" },
-      { E: "-0", LS: "T" },
-      { E: "-0", LS: "-8" },
-      { E: "-0", LS: "-6" },
-      { E: "-1", LS: "-6" },
-      { E: "-2", LS: "-5" },
-      { E: "-3", LS: "-5" },
-      { E: "-4", LS: "-5" },
+      { E: "-4", LS: "-4" },
       { E: "-5", LS: "-4" },
-      { E: "-6", LS: "-4" },
-      { E: "-7", LS: "-4" },
-      { E: "-8", LS: "-3" },
-      { E: "-9", LS: "-3" },
+      { E: "-5", LS: "-4" },
+      { E: "-6", LS: "-3" },
+      { E: "-6", LS: "-3" },
+      { E: "-7", LS: "-2" },
+      { E: "-7", LS: "-2" },
+      { E: "-8", LS: "-1" },
+      { E: "-8", LS: "-1" },
+      { E: "-9", LS: "-1" },
+      { E: "-9", LS: "-1" },
+      { E: "-10", LS: "-0" },
+      { E: "-11", LS: "-0" },
+      { E: "-11", LS: "-0" },
+      { E: "-12", LS: "-0" },
+      { E: "-12", LS: "-0" },
+      { E: "-14", LS: "-0" },
+      { E: "-14", LS: "-0" },
+      { E: "-16", LS: "-0" },
+      { E: "-16", LS: "-0" },
+      { E: "-18", LS: "-0" },
+      { E: "-18", LS: "-0" },
+      { E: "T", LS: "-0" },
     ],
     // *hasard 9
     [
-      { E: "-0", LS: "T" },
-      { E: "-0", LS: "T" },
-      { E: "-0", LS: "-8" },
-      { E: "-0", LS: "-6" },
-      { E: "-1", LS: "-6" },
-      { E: "-2", LS: "-5" },
-      { E: "-3", LS: "-5" },
-      { E: "-4", LS: "-5" },
-      { E: "-5", LS: "-4" },
-      { E: "-6", LS: "-4" },
-      { E: "-7", LS: "-4" },
-      { E: "-8", LS: "-3" },
-      { E: "-9", LS: "-3" },
-    ],
-    // *hasard 0
-    [
-      { E: "-0", LS: "T" },
-      { E: "-0", LS: "T" },
-      { E: "-0", LS: "-8" },
-      { E: "-0", LS: "-6" },
-      { E: "-1", LS: "-6" },
-      { E: "-2", LS: "-5" },
-      { E: "-3", LS: "-5" },
-      { E: "-4", LS: "-5" },
-      { E: "-5", LS: "-4" },
-      { E: "-6", LS: "-4" },
-      { E: "-7", LS: "-4" },
-      { E: "-8", LS: "-3" },
-      { E: "-9", LS: "-3" },
+      { E: "-5", LS: "-3" },
+      { E: "-6", LS: "-3" },
+      { E: "-6", LS: "-3" },
+      { E: "-7", LS: "-2" },
+      { E: "-7", LS: "-2" },
+      { E: "-8", LS: "-0" },
+      { E: "-8", LS: "-0" },
+      { E: "-9", LS: "-0" },
+      { E: "-9", LS: "-0" },
+      { E: "-10", LS: "-0" },
+      { E: "-10", LS: "-0" },
+      { E: "-11", LS: "-0" },
+      { E: "-12", LS: "-0" },
+      { E: "-12", LS: "-0" },
+      { E: "-14", LS: "-0" },
+      { E: "-14", LS: "-0" },
+      { E: "-16", LS: "-0" },
+      { E: "-16", LS: "-0" },
+      { E: "-18", LS: "-0" },
+      { E: "-18", LS: "-0" },
+      { E: "T", LS: "-0" },
+      { E: "T", LS: "-0" },
+      { E: "T", LS: "-0" },
     ],
   ];
 
   //* Fonction pour obtenir le résultat
-  // function getResult(hasard, quotient) {
-  //*    Clamp quotient entre -11 et 11
-  //   if (quotient < -11) quotient = -11;
-  //   if (quotient > 11) quotient = 11;
+  function getResult(hasard, quotient) {
+    //*    forcage pour géré la partie "-11 ou infér" et "+11 ou supp"
+    if (quotient < -11) quotient = -11;
+    if (quotient > 11) quotient = 11;
+    // récupère l'index correspondant dans le tableau "quotients"
+    const colIndex = quotients.indexOf(quotient);
+    //  me retourne un objet { E: ..., LS: ... }
+    return tableCoups[hasard][colIndex];
+  }
 
-  //   const colIndex = quotients.indexOf(quotient);
-  //   return tableCoups[hasard][colIndex]; // retourne un objet { E: ..., LS: ... }
-  // }
+  // gestion du combat au click
 
-  //* Exemple d'appel
-  // const result = getResult(3, -5); // Suppose que le hasard est 3 et quotient -5
-  // console.log("Dégâts à l'ennemi :", result.E);
-  // console.log("Dégâts au Loup Solitaire :", result.LS);
-  //!fin du cicle de combat
+  const handleFight = () => {
+    const newNumber = Math.floor(Math.random() * (9 - 0 + 1)) + 0;
+    const resultFight = getResult(newNumber, quotAttak);
+    console.log("resultat table des coup : ", resultFight);
+    const newLsEndurance = lsEndurance - Math.abs(resultFight.LS);
+    const newEnnemyEndurance = enemyEndurance - Math.abs(resultFight.E);
+    setLsEndurance(newLsEndurance);
+    setEnemyEndurance(newEnnemyEndurance);
+    setResultFight(resultFight);
+  };
 
   // calcul du quotien d'attaque
   useEffect(() => {
     setQuotAttak(lsAbility - enemyAbility);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lsAbility, enemyAbility]);
+  useEffect(() => {
+    if (lsEndurance <= 0 || enemyEndurance <= 0) {
+      setFight(false);
+    } else setFight(true);
+  }, [lsEndurance, enemyEndurance]);
 
   return (
     <>
@@ -245,8 +359,8 @@ export default function LsFight() {
             type="number"
             name="endurance-fight-ls"
             id="endurance-fight-ls"
-            value={endurance}
-            onChange={handleInputChange(setEndurance, "number")}
+            value={lsEndurance}
+            onChange={handleInputChange(setLsEndurance, "number")}
           />
         </div>
         <div className="ls-endurance-fight-box">
@@ -261,20 +375,43 @@ export default function LsFight() {
           />
         </div>
       </div>
-      <Button className={"button-fight"}>Combat</Button>
+      <Button
+        id="button-fight"
+        className={fight ? "button-fight" : "button-fight-hidden"}
+        onClick={handleFight}
+      >
+        Combat
+      </Button>
       <p className="ls-result">Résultat de Combat</p>
       <div className="ls-result-fight">
-        <p className="ls-result">
-          - <span className="ls-perso">LS </span>
-          perd <span className="ls-life-pts">5</span> pts de vie .
-        </p>
-        <p className="ls-result">
-          - Il lui reste <span className="ls-has-life">12</span> pts de vie !
-        </p>
-        <p className="ls-result">
-          - <span className="ls-perso">ennemi </span>
-          perd <span className="ls-life-pts">7</span> pts de vie .
-        </p>
+        {lsEndurance > 0 && (
+          <p className="ls-result">
+            - <span className="ls-perso">LS </span>
+            perd <span className="ls-life-pts">
+              {resultFight?.LS ?? "0"}
+            </span>{" "}
+            pts de vie .
+          </p>
+        )}
+        {lsEndurance <= 0 && (
+          <p className="ls-result">
+            Loup Solitaire est <span className="ls-perso">MORT </span> !
+          </p>
+        )}
+        {enemyEndurance > 0 && (
+          <p className="ls-result">
+            - <span className="ls-perso">ennemi </span>
+            perd <span className="ls-life-pts">
+              {resultFight?.E ?? "0"}
+            </span>{" "}
+            pts de vie .
+          </p>
+        )}
+        {enemyEndurance <= 0 && (
+          <p className="ls-result">
+            Votre ennemi est <span className="ls-perso">MORT </span> !
+          </p>
+        )}
       </div>
     </>
   );

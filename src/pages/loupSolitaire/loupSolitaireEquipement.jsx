@@ -11,7 +11,7 @@ export default function LsEquipment() {
   );
 
   // mise en place du sac d'objet spéciaux
-  const specialBagItem = Array.from({ length: 8 }, (_, i) =>
+  const specialBagItem = Array.from({ length: 12 }, (_, i) =>
     UsePersistedState(`ls-special-bag-item${i + 1}`, "***")
   );
 
