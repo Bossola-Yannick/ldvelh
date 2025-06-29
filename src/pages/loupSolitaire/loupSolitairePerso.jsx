@@ -2,8 +2,8 @@ import { UsePersistedState } from "../../hooks/usePersistedState";
 import { handleInputChange } from "../../utils/handleInputChange";
 
 export default function LsPerso() {
-  const [ability, setAbility] = UsePersistedState("ls-ability", 0);
-  const [endurance, setEndurance] = UsePersistedState("ls-endurance", 0);
+  const [ability, setAbility] = UsePersistedState("ls-ability", "");
+  const [endurance, setEndurance] = UsePersistedState("ls-endurance", "");
 
   // mise en place de la liste des disciplines kaï
   const kaiDiscs = Array.from({ length: 6 }, (_, i) =>

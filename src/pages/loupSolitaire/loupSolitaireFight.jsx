@@ -5,12 +5,15 @@ import { handleInputChange } from "../../utils/handleInputChange";
 import { useEffect } from "react";
 
 export default function LsFight() {
-  const [lsAbility, setLsAbility] = UsePersistedState("ls-ability", 0);
-  const [enemyAbility, setEnemyAbility] = UsePersistedState("enemy-ability", 0);
-  const [lsEndurance, setLsEndurance] = UsePersistedState("ls-endurance", 0);
+  const [lsAbility, setLsAbility] = UsePersistedState("ls-ability", "");
+  const [enemyAbility, setEnemyAbility] = UsePersistedState(
+    "enemy-ability",
+    ""
+  );
+  const [lsEndurance, setLsEndurance] = UsePersistedState("ls-endurance", "");
   const [enemyEndurance, setEnemyEndurance] = UsePersistedState(
     "enemy-endurance",
-    0
+    ""
   );
   const [quotAttak, setQuotAttak] = UsePersistedState("ls-quotient-attaque", 0);
   const [resultFight, setResultFight] = UsePersistedState("resultFight", {});
@@ -316,10 +319,15 @@ export default function LsFight() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lsAbility, enemyAbility]);
   useEffect(() => {
-    if (lsEndurance <= 0 || enemyEndurance <= 0) {
+    if (
+      enemyAbility === "" ||
+      enemyEndurance === "" ||
+      parseInt(lsEndurance) <= 0 ||
+      parseInt(enemyEndurance) <= 0
+    ) {
       setFight(false);
     } else setFight(true);
-  }, [lsEndurance, enemyEndurance]);
+  }, [lsEndurance, enemyEndurance, enemyAbility]);
 
   return (
     <>
@@ -393,7 +401,7 @@ export default function LsFight() {
             pts de vie .
           </p>
         )}
-        {lsEndurance <= 0 && (
+        {lsEndurance <= 0 && lsEndurance != "" && (
           <p className="ls-result">
             Loup Solitaire est <span className="ls-perso">MORT </span> !
           </p>
