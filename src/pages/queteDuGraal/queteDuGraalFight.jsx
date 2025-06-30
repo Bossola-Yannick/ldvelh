@@ -30,12 +30,12 @@ export default function QdGFight() {
     const Pip =
       Math.floor(Math.random() * (6 - 1 + 1)) +
       0 +
-      (Math.floor(Math.random() * (6 - 1 + 1)) + 0);
+      (Math.floor(Math.random() * (6 - 1 + 1)) + 1);
     // setResultPip(Pip);
     const Enemy =
       Math.floor(Math.random() * (6 - 1 + 1)) +
       0 +
-      (Math.floor(Math.random() * (6 - 1 + 1)) + 0);
+      (Math.floor(Math.random() * (6 - 1 + 1)) + 1);
     // setResultEnemy(Enemy);
     if (Pip >= Enemy) {
       setOrderFighter(["pip", "enemy"]);
@@ -51,8 +51,8 @@ export default function QdGFight() {
     setIsCheckedEj(e.target.checked);
   };
   function turnFight(fighter) {
-    const diceOne = Math.floor(Math.random() * (6 - 1 + 1)) + 0;
-    const diceTwo = Math.floor(Math.random() * (6 - 1 + 1)) + 0;
+    const diceOne = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+    const diceTwo = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
     const resultDice = diceOne + diceTwo;
     setDiceFight1(diceOne);
     setDiceFight2(diceTwo);
