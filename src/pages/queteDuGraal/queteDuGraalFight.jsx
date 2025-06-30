@@ -12,8 +12,8 @@ export default function QdGFight() {
   const [xpFight, setXpFight] = UsePersistedState("xp-fight", 0);
   const [enemyPdv, setEnemyPdv] = UsePersistedState("enemy-pdv", 1);
   const [enemyDice, setEnemyDice] = UsePersistedState("enemy-dice", 6);
-  const [resultPip, setResultPip] = UsePersistedState("result-pip", 0);
-  const [resultEnemy, setResultEnemy] = UsePersistedState("result-enemy", 0);
+  // const [resultPip, setResultPip] = UsePersistedState("result-pip", 0);
+  // const [resultEnemy, setResultEnemy] = UsePersistedState("result-enemy", 0);
   const [orderFighter, setOrderFighter] = UsePersistedState("order-fighter", [
     "",
   ]);
@@ -31,20 +31,20 @@ export default function QdGFight() {
       Math.floor(Math.random() * (6 - 1 + 1)) +
       0 +
       (Math.floor(Math.random() * (6 - 1 + 1)) + 0);
-    setResultPip(Pip);
+    // setResultPip(Pip);
     const Enemy =
       Math.floor(Math.random() * (6 - 1 + 1)) +
       0 +
       (Math.floor(Math.random() * (6 - 1 + 1)) + 0);
-    setResultEnemy(Enemy);
+    // setResultEnemy(Enemy);
     if (Pip >= Enemy) {
       setOrderFighter(["pip", "enemy"]);
+      setTurnFighter("pip");
       setMessageFight("Pip frappe en 1er !");
-      turnFight("pip");
     } else {
       setOrderFighter(["enemy", "pip"]);
+      setTurnFighter("enemy");
       setMessageFight("Adversaire frappe en 1er !");
-      turnFight("enemy");
     }
   };
   const handleCheck = (e) => {
@@ -180,14 +180,14 @@ export default function QdGFight() {
           <Button className={"button-fight"} onClick={handleFightStart}>
             Qui commence ?
           </Button>
-          <div className="qdg-dice-box">
+          {/* <div className="qdg-dice-box">
             <div className="qdg-dice" id="dice-1">
               <p className="qdg-dice-result">{resultPip}</p>
             </div>
             <div className="qdg-dice" id="dice-2">
               <p className="qdg-dice-result">{resultEnemy}</p>
             </div>
-          </div>
+          </div> */}
         </>
       )}
       {orderFighter[0] != "" && (
@@ -198,7 +198,7 @@ export default function QdGFight() {
               turnFight(turnFighter);
             }}
           >
-            Combat
+            Assaut
           </Button>
           <div className="qdg-dice-box">
             <div className="qdg-dice" id="dice-1">

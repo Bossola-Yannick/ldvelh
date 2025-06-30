@@ -74,6 +74,12 @@
   bottom: 1rem;
   right: -0.5rem;
 }
+.qdg-pip-select input {
+  height: 1rem;
+  width: 1rem;
+  margin: 0.5rem auto;
+  box-shadow: 0px 0px 4px 2px #080808;
+}
 .qdg-dice-box {
   display: flex;
   justify-content: center;
