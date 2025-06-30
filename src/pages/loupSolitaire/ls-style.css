@@ -24,7 +24,7 @@
   margin-bottom: 1rem;
 }
 input {
-  background-image: url(../../../public/images/parcheminFini.png);
+  background-image: url(../../../public/images/parcheminFini.webp);
   background-size: cover;
   background-position: center;
   border: none;
@@ -83,7 +83,7 @@ input {
   cursor: pointer;
 }
 .ls-note-button {
-  background-image: url(../../../public/images/parcheminFini.png);
+  background-image: url(../../../public/images/parcheminFini.webp);
   background-size: cover;
   background-position: center;
   background-color: transparent;
@@ -185,7 +185,7 @@ input {
 }
 .ls-hasard-score {
   font-size: 5rem;
-  background-image: url(../../../public/images/parcheminFini.png);
+  background-image: url(../../../public/images/parcheminFini.webp);
   background-size: cover;
   background-position: center;
   background-color: transparent;

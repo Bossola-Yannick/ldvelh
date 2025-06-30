@@ -2,7 +2,7 @@
 .df-fighter {
   display: flex;
   margin-block: 1rem;
-  background-image: url(../../../public/images/parcheminFini.png);
+  background-image: url(../../../public/images/parcheminFini.webp);
   background-position: center;
   background-size: cover;
 }
@@ -90,7 +90,7 @@
   border: 1px solid black;
   border-radius: 50%;
   box-shadow: 0px 0px 18px 0px #000000;
-  background-image: url(../../../public/images/parcheminFini.png);
+  background-image: url(../../../public/images/parcheminFini.webp);
   background-position: center;
   background-size: cover;
   display: flex;
@@ -147,7 +147,7 @@
 .df-stats-list {
   width: 90%;
   margin: 1rem auto;
-  background-image: url(../../../public/images/parcheminFini.png);
+  background-image: url(../../../public/images/parcheminFini.webp);
   background-position: center;
   background-size: cover;
 }

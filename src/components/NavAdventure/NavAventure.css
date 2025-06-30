@@ -1,7 +1,7 @@
 .nav {
   display: flex;
   justify-content: space-evenly;
-  background-image: url(/images/parcheminFini.png);
+  background-image: url(/images/parcheminFini.webp);
   background-size: cover;
   background-position: center;
   height: 4rem;
