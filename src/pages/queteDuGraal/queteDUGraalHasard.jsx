@@ -21,6 +21,9 @@ export default function QdGHasard() {
         <p className="qdg-hasard-score">{dice1}</p>
         <p className="qdg-hasard-score">{dice2}</p>
       </div>
+      <p className="qdg-message">
+        Si vous devez lancer 1 seul dé prendre le résultat du 1er dé !
+      </p>
     </div>
   );
 }

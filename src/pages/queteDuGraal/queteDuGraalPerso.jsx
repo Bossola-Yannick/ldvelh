@@ -6,7 +6,7 @@ export default function QdGPerso() {
   const [equipments, setEquipments] = UsePersistedState("qdg-equipement", [""]);
   const [pdvStart, setPdvStart] = UsePersistedState("start-pdv", "");
   const [pdvCurrent, setPdvCurrent] = UsePersistedState("current-pdv", "");
-  const [xpFight, setXpFight] = UsePersistedState("xp-fight", "");
+  const [xpFight, setXpFight] = UsePersistedState("xp-fight", 0);
   const [pdvPerm, setPdvPerm] = UsePersistedState("perm-pdvt", 0);
   // Gérer la modification d'une note
   const handleEquipChange = (index) => (e) => {
@@ -25,10 +25,23 @@ export default function QdGPerso() {
   useEffect(() => {
     if (xpFight >= 20) {
       const newPdvPerm = pdvPerm + 1;
+      const newPdvStart = pdvStart + 1;
+      const newPdvCurrent = pdvCurrent + 1;
+      setPdvStart(newPdvStart);
       setPdvPerm(newPdvPerm);
+      setPdvCurrent(newPdvCurrent);
       setXpFight(0);
     }
-  }, [xpFight, pdvPerm, setPdvPerm, setXpFight]);
+  }, [
+    xpFight,
+    pdvCurrent,
+    pdvPerm,
+    pdvStart,
+    setPdvCurrent,
+    setPdvPerm,
+    setPdvStart,
+    setXpFight,
+  ]);
   return (
     <>
       <div className="qdg-stats">
@@ -79,12 +92,12 @@ export default function QdGPerso() {
             name="xpFight"
             id="xpFight"
             value={pdvPerm}
-            onChange={(handleInputChange(setPdvPerm), "number")}
+            readOnly
           />
         </div>
       </div>
       <div className="qdg-equipment">
-        <h5 className="qdg-equip-title">Equipments Transportés :</h5>
+        <h5 className="qdg-title">Equipments Transportés :</h5>
         <ul>
           {equipments.map((equip, i) => (
             <li key={i}>

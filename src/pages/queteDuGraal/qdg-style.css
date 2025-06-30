@@ -18,9 +18,31 @@
   background: linear-gradient(to bottom, #ce0100 5%, #fe1a00 100%);
   background-color: #ce0100;
 }
+.qdg-dice-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 2.5rem;
+  background-image: url(../../../public/images/parcheminFini.webp);
+  background-size: cover;
+
+  height: 4rem;
+  width: 4rem;
+}
 .qdg-life-fighter {
   display: flex;
+  justify-content: space-around;
   margin-block: 1rem;
+}
+.qdg-life-fighter-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.qdg-pip-select {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .qdg-life-fighter-box input {
   height: 5rem;
@@ -29,6 +51,28 @@
   font-size: 3rem;
   margin-block: 1rem;
   font-weight: 700;
+}
+.up-life,
+.down-life {
+  position: absolute;
+  height: 2rem;
+  width: 2rem;
+  font-size: 2rem;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+.up-life {
+  background-color: rgb(40, 177, 131);
+  top: 2rem;
+  right: -0.5rem;
+}
+.down-life {
+  background-color: rgb(212, 28, 28);
+  bottom: 1rem;
+  right: -0.5rem;
 }
 .qdg-dice-box {
   display: flex;
@@ -102,14 +146,14 @@
   font-weight: 700;
   text-align: center;
 }
-.qdg-equip-title {
-  font-size: 1.6rem;
-}
-.qdg-equipment li {
+
+.qdg-equipment li,
+.qdg-notes li {
   position: relative;
   margin-block: 1rem;
 }
-.qdg-delete-equip {
+.qdg-delete-equip,
+.qdg-delete-note {
   position: absolute;
   background-color: red;
   padding: 0.3rem;
@@ -161,4 +205,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.qdg-message {
+  font-size: 1.2rem;
 }
