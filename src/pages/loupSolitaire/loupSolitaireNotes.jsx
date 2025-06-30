@@ -46,10 +46,10 @@ export default function LsNotes() {
               </span>
             </li>
           ))}
-          <button type="button" onClick={addNote} className="ls-note-button">
-            Ajouter une note
-          </button>
         </ul>
+        <button type="button" onClick={addNote} className="ls-note-button">
+          Ajouter une note
+        </button>
       </div>
     </>
   );

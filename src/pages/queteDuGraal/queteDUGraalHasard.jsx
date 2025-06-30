@@ -2,8 +2,8 @@ import Button from "../../components/Button/button";
 import { UsePersistedState } from "../../hooks/usePersistedState";
 import randomNumber from "../../utils/randomNumberLs";
 export default function QdGHasard() {
-  const [dice1, setDice1] = UsePersistedState("random-number", 0);
-  const [dice2, setDice2] = UsePersistedState("random-number", 0);
+  const [dice1, setDice1] = UsePersistedState("dice1", 0);
+  const [dice2, setDice2] = UsePersistedState("dice2", 0);
 
   return (
     <div className="qdg-hasardMain">
