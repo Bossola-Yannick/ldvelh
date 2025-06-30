@@ -59,7 +59,7 @@ export default function QdGFight() {
     setResultDiceFight(resultDice);
     if (fighter === "pip") {
       if (isCheckedEj) {
-        if (resultDice >= 4) {
+        if (resultDice > 4) {
           setMessageFight(
             "Pip touche sont adversaire ! Modifier les Pdv de L'Adversaire en fonction des instructions."
           );
@@ -68,7 +68,7 @@ export default function QdGFight() {
         }
         setTurnFighter("enemy");
       } else {
-        if (resultDice >= 6) {
+        if (resultDice > 6) {
           setMessageFight(
             "Pip touche sont adversaire ! Modifier les Pdv de L'Adversaire en fonction des instructions."
           );
