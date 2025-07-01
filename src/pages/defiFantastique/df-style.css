@@ -19,15 +19,22 @@
   margin-block: 1rem;
 }
 .df-result {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  margin-block: 2rem;
+  padding: 0.5rem;
 }
-.df-result-title {
-  margin-block: 1rem;
+.df-result-turn {
+  background-color: rgba(255, 255, 255, 0.068);
+  color: brown;
+}
+.df-result-fight {
+  font-size: 1.6rem;
+  background-color: rgba(255, 255, 255, 0.068);
 }
 .df-click-fight {
   padding: 0.5rem 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
 }
@@ -55,24 +62,38 @@
   display: flex;
   flex-direction: column;
 }
+.df-chance-box h3 {
+  font-size: 1.3rem;
+}
 /* bouton chance */
-.df-button-chance {
-  width: 4rem;
+.df-button {
+  width: 5rem;
   height: 5rem;
   text-align: center;
   padding: 0.5rem;
   box-shadow: inset 0px 1px 0px 0px #f29c93;
-  background: linear-gradient(to bottom, #00fe3f 5%, #05b331 100%);
-  background-color: #00fe3f;
   border-radius: 6px;
-  border: 1px solid #00fe3f;
   display: inline-block;
   cursor: pointer;
   font-size: 1rem;
   text-decoration: none;
   text-shadow: 0px 1px 0px #b23e35;
 }
-.df-button-chance:hover {
+.no-chance {
+  background: linear-gradient(to bottom, #a5841a 5%, #d1ba34 100%);
+  background-color: #a5841a;
+  border: 1px solid #a5841a;
+}
+.no-chance:hover {
+  background: linear-gradient(to bottom, #d1ba34 5%, #a5841a 100%);
+  background-color: #d1ba34;
+}
+.chance {
+  background: linear-gradient(to bottom, #00fe3f 5%, #05b331 100%);
+  background-color: #00fe3f;
+  border: 1px solid #00fe3f;
+}
+.chance:hover {
   background: linear-gradient(to bottom, #05b331 5%, #00fe3f 100%);
   background-color: #00fe3f;
 }
@@ -97,16 +118,68 @@
   flex-direction: column;
   justify-content: center;
 }
-.df-perso,
+.df-chance-box .df-perso,
 .df-life-pts,
 .df-has-life {
   font-size: 1.8rem;
   color: brown;
 }
+.df-dice {
+  font-size: 3rem;
+  background-image: url(../../../public/images/parcheminFini.webp);
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 /* Page Note et chapitre */
+.df-notes li {
+  position: relative;
+  margin-block: 1rem;
+}
+.df-delete-note {
+  position: absolute;
+  background-color: red;
+  padding: 0.3rem;
+  border-radius: 50%;
+  top: -0.9rem;
+  right: -0.5rem;
+  cursor: pointer;
+}
+.df-note-button {
+  background-image: url(../../../public/images/parcheminFini.webp);
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+  margin-block: 1rem;
+}
 .df-notes-title {
   font-size: 1.6rem;
 }
+.df-book {
+  display: flex;
+  flex-direction: column;
+}
+.df-book label,
+.df-chapter label {
+  font-size: 1.3rem;
+  margin: 1rem 0 0.5rem 0;
+}
+.df-book input {
+  height: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-inline: 0.8rem;
+  text-align: center;
+}
+
 .df-notes {
   width: 90%;
   margin: 1rem auto;
@@ -180,6 +253,26 @@
   justify-content: end;
   align-items: center;
 }
+.df-equipment li {
+  position: relative;
+  margin-block: 1rem;
+}
+.df-delete-equipment {
+  position: absolute;
+  background-color: red;
+  padding: 0.3rem;
+  border-radius: 50%;
+  top: -0.9rem;
+  right: -0.5rem;
+  cursor: pointer;
+}
+.df-equipment-button {
+  background-image: url(../../../public/images/parcheminFini.webp);
+  background-size: cover;
+  background-position: center;
+  background-color: transparent;
+  margin-block: 1rem;
+}
 /* page Hasard */
 .df-hasard-title {
   font-size: 1.5rem;
@@ -223,7 +316,6 @@
 .df-dice-box {
   display: flex;
   justify-content: center;
-  gap: 2rem;
   margin-block: 1rem;
 }
 .df-dice-choice {
