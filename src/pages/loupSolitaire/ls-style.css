@@ -2,6 +2,7 @@
   font-size: 2rem;
   margin-block: 1rem;
 }
+/* page perso */
 .ls-stats {
   display: flex;
 }
@@ -57,6 +58,23 @@ input {
   width: 90%;
   margin: 0 auto;
 }
+/* Page Note Chapitre */
+.qdg-book {
+  display: flex;
+  flex-direction: column;
+}
+.qdg-book label,
+.qdg-chapter label {
+  font-size: 1.3rem;
+  margin: 1rem 0 0.5rem 0;
+}
+.qdg-book input {
+  height: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-inline: 0.8rem;
+  text-align: center;
+}
 .ls-chapter {
   display: flex;
   flex-direction: column;
@@ -88,6 +106,19 @@ input {
   background-position: center;
   background-color: transparent;
   margin-block: 1rem;
+}
+
+/*  page Combat */
+.ls-weapon-mastery {
+  margin-bottom: 1rem;
+}
+.ls-weapon-mastery label {
+  font-size: 1.4rem;
+  margin-right: 1rem;
+}
+.ls-weapon-mastery input {
+  width: 1.2rem;
+  height: 1.2rem;
 }
 .ls-quot {
   font-size: 1.6rem;
@@ -148,18 +179,7 @@ input {
   flex-direction: column;
   gap: 0.3rem;
 }
-.ls-maitrise {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-}
-.ls-maitrise label {
-  font-size: 1rem;
-  width: 70%;
-}
-.ls-maitrise input {
-  width: 20%;
-}
+
 /* Page Hasard */
 .ls-hasard-title {
   font-size: 1.5rem;

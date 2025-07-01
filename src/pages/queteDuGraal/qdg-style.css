@@ -102,6 +102,23 @@
 .qdg-notes-title {
   font-size: 1.6rem;
 }
+.qdg-book {
+  display: flex;
+  flex-direction: column;
+}
+.qdg-book label,
+.qdg-chapter label {
+  font-size: 1.3rem;
+  margin: 1rem 0 0.5rem 0;
+}
+.qdg-book input {
+  height: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-inline: 0.8rem;
+  text-align: center;
+}
+
 .qdg-notes {
   width: 90%;
   margin: 1rem auto;

@@ -3,6 +3,7 @@ import { handleInputChange } from "../../utils/handleInputChange";
 export default function QdGNotes() {
   const [chapter, setChapter] = UsePersistedState("qdg-chapter", 0);
   const [notes, setNotes] = UsePersistedState("qdg-notes", [""]);
+  const [titleBook, setTitleBook] = UsePersistedState("qdg-title-book", "");
   // Gérer la modification d'une note
   const handleNoteChange = (index) => (e) => {
     const newNotes = [...notes];
@@ -19,6 +20,16 @@ export default function QdGNotes() {
   };
   return (
     <>
+      <div className="qdg-book">
+        <label htmlFor="title-book">Titre du livre : </label>
+        <input
+          type="text"
+          name="title-book"
+          id="title-book"
+          value={titleBook}
+          onChange={handleInputChange(setTitleBook, "text")}
+        />
+      </div>
       <div className="qdg-chapter">
         <label htmlFor="chapter">Chapitre en cours :</label>
         <input

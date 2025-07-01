@@ -3,6 +3,7 @@ import { handleInputChange } from "../../utils/handleInputChange";
 export default function LsNotes() {
   const [chapter, setChapter] = UsePersistedState("ls-chapter", 0);
   const [notes, setNotes] = UsePersistedState("ls-notes", [""]);
+  const [titleBook, setTitleBook] = UsePersistedState("ls-book", "");
   // Gérer la modification d'une note
   const handleNoteChange = (index) => (e) => {
     const newNotes = [...notes];
@@ -19,6 +20,16 @@ export default function LsNotes() {
   };
   return (
     <>
+      <div className="ls-book">
+        <label htmlFor="title-book">Titre du livre : </label>
+        <input
+          type="text"
+          name="title-book"
+          id="title-book"
+          value={titleBook}
+          onChange={handleInputChange(setTitleBook, "text")}
+        />
+      </div>
       <div className="ls-chapter">
         <label htmlFor="chapter">Chapitre en cours :</label>
         <input

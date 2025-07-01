@@ -5,7 +5,12 @@ import { handleInputChange } from "../../utils/handleInputChange";
 import { useEffect } from "react";
 
 export default function LsFight() {
+  // eslint-disable-next-line
   const [lsAbility, setLsAbility] = UsePersistedState("ls-ability", "");
+  const [fightAbility, setFightAbility] = UsePersistedState(
+    "fight-ability",
+    lsAbility
+  );
   const [enemyAbility, setEnemyAbility] = UsePersistedState(
     "enemy-ability",
     ""
@@ -17,6 +22,10 @@ export default function LsFight() {
   );
   const [quotAttak, setQuotAttak] = UsePersistedState("ls-quotient-attaque", 0);
   const [resultFight, setResultFight] = UsePersistedState("resultFight", {});
+  const [weaponMastery, setWeaponMastery] = UsePersistedState(
+    "weapon-mastery",
+    false
+  );
   const [fight, setFight] = useState(true);
   //!voici la base du code pour gérer le cicle de combat
   // mise en tableau des quotient d'attaque
@@ -315,9 +324,9 @@ export default function LsFight() {
 
   // calcul du quotien d'attaque
   useEffect(() => {
-    setQuotAttak(lsAbility - enemyAbility);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [lsAbility, enemyAbility]);
+    setQuotAttak(fightAbility - enemyAbility);
+    // eslint-disable-next-line
+  }, [fightAbility, enemyAbility]);
   useEffect(() => {
     if (
       enemyAbility === "" ||
@@ -329,8 +338,31 @@ export default function LsFight() {
     } else setFight(true);
   }, [lsEndurance, enemyEndurance, enemyAbility]);
 
+  // gestion maitrise d'arme de combat
+  const handleCheckedMastery = (e) => {
+    setWeaponMastery(e.target.checked);
+  };
+  useEffect(() => {
+    if (weaponMastery) {
+      setFightAbility(lsAbility + 2);
+    } else {
+      setFightAbility(lsAbility);
+    }
+    // eslint-disable-next-line
+  }, [weaponMastery]);
+
   return (
     <>
+      <article className="ls-weapon-mastery">
+        <label htmlFor="ls-mastery">Maitrise d'Arme</label>
+        <input
+          type="checkbox"
+          name="ls-mastery"
+          id="ls-mastery"
+          checked={weaponMastery}
+          onChange={handleCheckedMastery}
+        />
+      </article>
       <div className="ls-quot">
         <p className="ls-quot-text">
           Quotient d'Attaque :{" "}
@@ -344,8 +376,9 @@ export default function LsFight() {
             type="number"
             name="ability-fight-ls"
             id="ability-fight-ls"
-            value={lsAbility}
-            onChange={handleInputChange(setLsAbility, "number")}
+            value={fightAbility}
+            // onChange={handleInputChange(setLsAbility, "number")}
+            readOnly
           />
         </div>
         <div className="ls-ability-fight-box">
@@ -368,7 +401,8 @@ export default function LsFight() {
             name="endurance-fight-ls"
             id="endurance-fight-ls"
             value={lsEndurance}
-            onChange={handleInputChange(setLsEndurance, "number")}
+            // onChange={handleInputChange(setLsEndurance, "number")}
+            readOnly
           />
         </div>
         <div className="ls-endurance-fight-box">

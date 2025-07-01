@@ -49,6 +49,7 @@ export default function QdGFight() {
   };
   const handleCheck = (e) => {
     setIsCheckedEj(e.target.checked);
+    console.log(e.target.checked);
   };
   function turnFight(fighter) {
     const diceOne = Math.floor(Math.random() * (6 - 1 + 1)) + 1;

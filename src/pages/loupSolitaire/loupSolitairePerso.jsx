@@ -2,7 +2,7 @@ import { UsePersistedState } from "../../hooks/usePersistedState";
 import { handleInputChange } from "../../utils/handleInputChange";
 
 export default function LsPerso() {
-  const [ability, setAbility] = UsePersistedState("ls-ability", "");
+  const [lsAbility, setLsAbility] = UsePersistedState("ls-ability", "");
   const [endurance, setEndurance] = UsePersistedState("ls-endurance", "");
 
   // mise en place de la liste des disciplines kaï
@@ -43,8 +43,8 @@ export default function LsPerso() {
             type="number"
             name="ability"
             id="ability"
-            value={ability}
-            onChange={handleInputChange(setAbility, "number")}
+            value={lsAbility}
+            onChange={handleInputChange(setLsAbility, "number")}
           />
         </div>
         <div className="ls-stat">
