@@ -19,7 +19,7 @@
 body {
   font-family: var(--title-font);
 }
-.main {
+main {
   min-height: 90vh;
 }
 a {

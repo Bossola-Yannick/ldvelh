@@ -3,6 +3,7 @@ import Button from "../../components/Button/button";
 import { UsePersistedState } from "../../hooks/usePersistedState";
 import { handleInputChange } from "../../utils/handleInputChange";
 import { useState } from "react";
+import handleCheck from "../../utils/handleCheck";
 
 export default function QdGFight() {
   const [isCheckedEj, setIsCheckedEj] = useState(false);
@@ -47,10 +48,9 @@ export default function QdGFight() {
       setMessageFight("Adversaire frappe en 1er !");
     }
   };
-  const handleCheck = (e) => {
-    setIsCheckedEj(e.target.checked);
-    console.log(e.target.checked);
-  };
+  // const handleCheck = (e) => {
+  //   setIsCheckedEj(e.target.checked);
+  // };
   function turnFight(fighter) {
     const diceOne = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
     const diceTwo = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
@@ -60,7 +60,7 @@ export default function QdGFight() {
     setResultDiceFight(resultDice);
     if (fighter === "pip") {
       if (isCheckedEj) {
-        if (resultDice > 4) {
+        if (resultDice >= 4) {
           setMessageFight(
             "Pip touche sont adversaire ! Modifier les Pdv de L'Adversaire en fonction des instructions."
           );
@@ -135,7 +135,9 @@ export default function QdGFight() {
             type="checkbox"
             name="sword"
             id="sword"
-            onChange={handleCheck}
+            onChange={(e) => {
+              handleCheck(setIsCheckedEj, e);
+            }}
           />
         </div>
       </div>

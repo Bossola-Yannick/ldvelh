@@ -232,3 +232,12 @@
 .qdg-message {
   font-size: 1.2rem;
 }
+.qdg-dice-choice {
+  display: flex;
+  flex-direction: column;
+}
+.qdg-dice-choice input {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin: 1rem auto;
+}

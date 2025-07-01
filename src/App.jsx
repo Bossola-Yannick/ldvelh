@@ -11,14 +11,14 @@ function App() {
   return (
     <Router basename="/ldvelh">
       <Header />
-      <section className="main">
+      <main>
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/loup-solitaire/*" element={<LoupSolitaire />} />
           <Route path="/quete-du-graal/*" element={<QueteDuGraal />} />
           <Route path="/defi-fantastique/*" element={<DefiFantastique />} />
         </Routes>
-      </section>
+      </main>
       <Footer />
     </Router>
   );

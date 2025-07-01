@@ -363,13 +363,13 @@ export default function LsFight() {
           onChange={handleCheckedMastery}
         />
       </article>
-      <div className="ls-quot">
+      <article className="ls-quot">
         <p className="ls-quot-text">
           Quotient d'Attaque :{" "}
           <span className="ls-quot-value">{quotAttak}</span>
         </p>
-      </div>
-      <div className="ls-ability-fight">
+      </article>
+      <article className="ls-ability-fight">
         <div className="ls-ability-fight-box">
           <label htmlFor="ability-fight-ls">Habilité LS</label>
           <input
@@ -392,8 +392,8 @@ export default function LsFight() {
             onChange={handleInputChange(setEnemyAbility, "number")}
           />
         </div>
-      </div>
-      <div className="ls-endurance-fight">
+      </article>
+      <article className="ls-endurance-fight">
         <div className="ls-endurance-fight-box">
           <label htmlFor="endurance-fight-ls">Endurance LS</label>
           <input
@@ -416,7 +416,7 @@ export default function LsFight() {
             onChange={handleInputChange(setEnemyEndurance, "number")}
           />
         </div>
-      </div>
+      </article>
       <Button
         id="button-fight"
         className={fight ? "button-fight" : "button-fight-hidden"}
@@ -425,7 +425,7 @@ export default function LsFight() {
         Combat
       </Button>
       <p className="ls-result">Résultat de Combat</p>
-      <div className="ls-result-fight">
+      <article className="ls-result-fight">
         {lsEndurance > 0 && (
           <p className="ls-result">
             - <span className="ls-perso">LS </span>
@@ -454,7 +454,7 @@ export default function LsFight() {
             Votre ennemi est <span className="ls-perso">MORT </span> !
           </p>
         )}
-      </div>
+      </article>
     </>
   );
 }
