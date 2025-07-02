@@ -1,10 +1,15 @@
 .title {
   font-size: 2rem;
   margin-block: 1rem;
+  background-image: url(../../../public/images/parcheminFini.webp);
+  background-size: cover;
+  background-position: center;
+  padding: 0.5rem;
 }
 /* page perso */
 .ls-stats {
   display: flex;
+  margin-top: 1rem;
 }
 .ls-stat label,
 .ls-arme label,
@@ -59,16 +64,16 @@ input {
   margin: 0 auto;
 }
 /* Page Note Chapitre */
-.qdg-book {
+.ls-book {
   display: flex;
   flex-direction: column;
 }
-.qdg-book label,
-.qdg-chapter label {
+.ls-book label,
+.ls-chapter label {
   font-size: 1.3rem;
   margin: 1rem 0 0.5rem 0;
 }
-.qdg-book input {
+.ls-book input {
   height: 2.5rem;
   font-size: 1.5rem;
   font-weight: 700;

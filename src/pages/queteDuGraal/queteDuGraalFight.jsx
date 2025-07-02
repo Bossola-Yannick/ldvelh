@@ -105,9 +105,10 @@ export default function QdGFight() {
   }, [pdvCurrent, enemyPdv]);
 
   return (
-    <>
-      <div className="qdg-life-fighter">
-        <div className="qdg-life-fighter-box">
+    <section>
+      <h3 className="df-title">Place au Combat !</h3>
+      <article className="qdg-life-fighter">
+        <article className="qdg-life-fighter-box">
           <label htmlFor="life-perso">Pv de Pip :</label>
           <input
             type="number"
@@ -128,8 +129,8 @@ export default function QdGFight() {
           >
             -
           </p>
-        </div>
-        <div className="qdg-pip-select">
+        </article>
+        <article className="qdg-pip-select">
           <label htmlFor="sword">Combat avec EJ</label>
           <input
             type="checkbox"
@@ -139,10 +140,10 @@ export default function QdGFight() {
               handleCheck(setIsCheckedEj, e);
             }}
           />
-        </div>
-      </div>
-      <div className="qdg-life-fighter">
-        <div className="qdg-life-fighter-box">
+        </article>
+      </article>
+      <article className="qdg-life-fighter">
+        <article className="qdg-life-fighter-box">
           <label htmlFor="life-ennemy">Pv ennemi :</label>
           <input
             type="number"
@@ -164,8 +165,8 @@ export default function QdGFight() {
           >
             -
           </p>
-        </div>
-        <div className="qdg-life-fighter-box">
+        </article>
+        <article className="qdg-life-fighter-box">
           <label htmlFor="enemy-dice">touche ennemi ?</label>
           <input
             type="number"
@@ -175,8 +176,8 @@ export default function QdGFight() {
             value={enemyDice}
             onChange={handleInputChange(setEnemyDice, "number")}
           />
-        </div>
-      </div>
+        </article>
+      </article>
 
       {orderFighter[0] === "" && (
         <>
@@ -203,22 +204,22 @@ export default function QdGFight() {
           >
             Assaut
           </Button>
-          <div className="qdg-dice-box">
-            <div className="qdg-dice" id="dice-1">
+          <article className="qdg-dice-box">
+            <article className="qdg-dice" id="dice-1">
               <p className="qdg-dice-result">{diceFight1}</p>
-            </div>
-            <div className="qdg-dice" id="dice-2">
+            </article>
+            <article className="qdg-dice" id="dice-2">
               <p className="qdg-dice-result">{diceFight2}</p>
-            </div>
-          </div>
+            </article>
+          </article>
         </>
       )}
       <p className="qdg-result qdg-result-title">
         Résultat de Combat : <span>{resultDiceFight}</span>
       </p>
-      <div className="qdg-result-fight">
+      <article className="qdg-result-fight">
         <p className="qdg-result">{messageFight}</p>
-      </div>
-    </>
+      </article>
+    </section>
   );
 }

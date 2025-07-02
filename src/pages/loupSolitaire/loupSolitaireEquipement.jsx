@@ -17,7 +17,7 @@ export default function LsEquipment() {
 
   // fonction du rendu des sacs
   const renderBagItem = (title, items, baseName) => (
-    <div className="ls-bag">
+    <section className="ls-bag">
       <h5 className="ls-title">{title}</h5>
       <ul>
         {items.map(([value, setter], index) => (
@@ -32,11 +32,12 @@ export default function LsEquipment() {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
   return (
-    <>
-      <div className="ls-armes">
+    <section>
+      <h3 className="df-title">Mon équipement</h3>
+      <article className="ls-armes">
         <div className="ls-arme">
           <label htmlFor="arme1">Arme 1</label>
           <input
@@ -57,9 +58,9 @@ export default function LsEquipment() {
             onChange={handleInputChange(setWeapon2, "text")}
           />
         </div>
-      </div>
+      </article>
       {renderBagItem("Sac à Dos", bagItem, "bag")}
       {renderBagItem("Objets Spéciaux", specialBagItem, "specialBag")}
-    </>
+    </section>
   );
 }

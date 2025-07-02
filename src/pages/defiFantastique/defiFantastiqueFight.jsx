@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "../../components/Button/button";
 import { UsePersistedState } from "../../hooks/usePersistedState";
 import { handleInputChange } from "../../utils/handleInputChange";
+import diceRandom from "../../utils/diceRandom";
 import { useEffect } from "react";
 // import randomNumber from "../../utils/randomNumberLs";
 
@@ -42,18 +43,12 @@ export default function DfFight() {
   const [dfMessage, setDfMessage] = useState("");
   const [dfDead, setDfDead] = useState(false);
 
-  // debut de la mechanique de jeu
-  function diceRandom(min, max) {
-    const dice = Math.floor(Math.random() * (max - min + min)) + min;
-    return dice;
-  }
-
+  // mecanique de combat
   function fightTurn() {
     setDfMessage("");
     const hero = dfCurrentAbility + diceRandom(1, 6) + diceRandom(1, 6);
     const enemy = dfEnemyAbility + diceRandom(1, 6) + diceRandom(1, 6);
-    console.log(hero, enemy);
-
+    console.log(`score heros : ${hero}, score enemy ${enemy}`);
     setFightingForceHero(hero);
     setFightingForceEnemy(enemy);
     if (hero > enemy) {
@@ -66,6 +61,7 @@ export default function DfFight() {
       setDfTurn("Vos armes s'entrechoque, lancer un nouvel assaut !");
     }
   }
+  // ne pas tenter la chance et laisser le déroulé du combat
   function notTryLuck() {
     if (fightingForceHero > fightingForceEnemy) {
       setDfEnemyEndurance(dfEnemyEndurance - 2);
@@ -77,10 +73,11 @@ export default function DfFight() {
     setFighting(false);
     setDfTurn("");
   }
+  // tenter la chance en combat
   function tryLuck() {
     const luck = diceRandom(1, 6) + diceRandom(1, 6);
     console.log(luck);
-    if (luck >= dfCurrentChance) {
+    if (luck <= dfCurrentChance) {
       if (fightingForceHero > fightingForceEnemy) {
         setDfEnemyEndurance(dfEnemyEndurance - 4);
         setDfMessage(
@@ -123,9 +120,10 @@ export default function DfFight() {
     }
   }, [dfCurrentEndurance, dfEnemyEndurance]);
   return (
-    <>
-      <div className="df-fighter">
-        <div className="df-life-fighter-box">
+    <section>
+      <h3 className="df-fight">Place aux combat !</h3>
+      <article className="df-fighter">
+        <article className="df-life-fighter-box">
           <label htmlFor="ability-perso">Habileté :</label>
           <input
             type="number"
@@ -135,8 +133,8 @@ export default function DfFight() {
             readOnly
             // onChange={handleInputChange(setDfCurrentAbility, "number")}
           />
-        </div>
-        <div className="df-life-fighter-box">
+        </article>
+        <article className="df-life-fighter-box">
           <label htmlFor="endurance-perso">Endurance :</label>
           <input
             type="number"
@@ -146,10 +144,10 @@ export default function DfFight() {
             readOnly
             // onChange={handleInputChange(setDfCurrentEndurance, "number")}
           />
-        </div>
-      </div>
-      <div className="df-fighter">
-        <div className="df-life-fighter-box">
+        </article>
+      </article>
+      <article className="df-fighter">
+        <article className="df-life-fighter-box">
           <label htmlFor="life-enemy">Hab ennemi :</label>
           <input
             type="number"
@@ -158,8 +156,8 @@ export default function DfFight() {
             value={dfEnemyAbility}
             onChange={handleInputChange(setDfEnemyAbility, "number")}
           />
-        </div>
-        <div className="df-life-fighter-box">
+        </article>
+        <article className="df-life-fighter-box">
           <label htmlFor="endurance-ennemy">Endu ennemi :</label>
           <input
             type="number"
@@ -168,14 +166,14 @@ export default function DfFight() {
             value={dfEnemyEndurance}
             onChange={handleInputChange(setDfEnemyEndurance, "number")}
           />
-        </div>
-      </div>
+        </article>
+      </article>
 
-      <div className="df-click-fight">
+      <article className="df-click-fight">
         {fighting ? (
-          <div className="df-chance-box">
+          <section className="df-chance-box">
             <h3>Pts de Chance restant</h3>
-            <div className="df-chance-points">
+            <article className="df-chance-points">
               <Button className={"df-button no-chance"} onClick={notTryLuck}>
                 Ne pas tenter la Chance
               </Button>
@@ -185,8 +183,8 @@ export default function DfFight() {
                   Tenter la Chance
                 </Button>
               )}
-            </div>
-          </div>
+            </article>
+          </section>
         ) : (
           !dfDead && (
             <Button className={"df-button-fight"} onClick={fightTurn}>
@@ -194,13 +192,13 @@ export default function DfFight() {
             </Button>
           )
         )}
-      </div>
-      <div className="df-result-fight">
+      </article>
+      <article className="df-result-fight">
         {dfTurn != "" && <p className="df-result df-result-turn">{dfTurn}</p>}
         {dfMessage != "" && (
           <p className="df-result df-result-fight">{dfMessage}</p>
         )}
-      </div>
-    </>
+      </article>
+    </section>
   );
 }

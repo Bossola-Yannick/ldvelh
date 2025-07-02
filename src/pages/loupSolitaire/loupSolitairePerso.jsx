@@ -17,7 +17,7 @@ export default function LsPerso() {
 
   // fonstion qui permet le rendu des listes de discipline
   const renderDisciplines = (title, items, baseName) => (
-    <div className="ls-discipline">
+    <section className="ls-discipline">
       <h5 className="ls-title">{title}</h5>
       <ul>
         {items.map(([value, setter], index) => (
@@ -32,12 +32,13 @@ export default function LsPerso() {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
   return (
-    <>
-      <div className="ls-stats">
-        <div className="ls-stat">
+    <section>
+      <h3 className="df-title">Ma Fiche Perso </h3>
+      <article className="ls-stats">
+        <article className="ls-stat">
           <label htmlFor="ability">Habilité</label>
           <input
             type="number"
@@ -46,8 +47,8 @@ export default function LsPerso() {
             value={lsAbility}
             onChange={handleInputChange(setLsAbility, "number")}
           />
-        </div>
-        <div className="ls-stat">
+        </article>
+        <article className="ls-stat">
           <label htmlFor="endurance">Endurance</label>
           <input
             type="number"
@@ -56,11 +57,11 @@ export default function LsPerso() {
             value={endurance}
             onChange={handleInputChange(setEndurance, "number")}
           />
-        </div>
-      </div>
+        </article>
+      </article>
 
       {renderDisciplines("Discipline Kaï", kaiDiscs, "kai")}
       {renderDisciplines("Discipline Kaï Sup", kaiPlusDiscs, "kai-sup")}
-    </>
+    </section>
   );
 }

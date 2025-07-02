@@ -9,8 +9,8 @@ export default function QdGHasard() {
   const [checkOneDice, setCheckOneDice] = useState(false);
 
   return (
-    <div className="qdg-hasard-main">
-      <h3 className="qdg-hasard-title">Prêt à faire confiance au hasard ?</h3>
+    <section className="qdg-hasard-main">
+      <h3 className="df-title">Place aux Hasard !</h3>
       <Button
         className={"qdg-hasard-button"}
         onClick={() => {
@@ -48,6 +48,6 @@ export default function QdGHasard() {
           }}
         />
       </article>
-    </div>
+    </section>
   );
 }

@@ -27,6 +27,7 @@ export default function LsFight() {
     false
   );
   const [fight, setFight] = useState(true);
+  const [lsHasardTable, setLsHasardTable] = useState(0);
   //!voici la base du code pour gérer le cicle de combat
   // mise en tableau des quotient d'attaque
   const quotients = [
@@ -320,6 +321,7 @@ export default function LsFight() {
     setLsEndurance(newLsEndurance);
     setEnemyEndurance(newEnnemyEndurance);
     setResultFight(resultFight);
+    setLsHasardTable(newNumber);
   };
 
   // calcul du quotien d'attaque
@@ -352,7 +354,8 @@ export default function LsFight() {
   }, [weaponMastery]);
 
   return (
-    <>
+    <section>
+      <h3 className="df-title">Place aux Combat !</h3>
       <article className="ls-weapon-mastery">
         <label htmlFor="ls-mastery">Maitrise d'Arme</label>
         <input
@@ -370,7 +373,7 @@ export default function LsFight() {
         </p>
       </article>
       <article className="ls-ability-fight">
-        <div className="ls-ability-fight-box">
+        <article className="ls-ability-fight-box">
           <label htmlFor="ability-fight-ls">Habilité LS</label>
           <input
             type="number"
@@ -380,8 +383,8 @@ export default function LsFight() {
             // onChange={handleInputChange(setLsAbility, "number")}
             readOnly
           />
-        </div>
-        <div className="ls-ability-fight-box">
+        </article>
+        <article className="ls-ability-fight-box">
           <label htmlFor="ability-fight-ennemy">Habilité ennemi</label>
           <input
             className="stat-ennemy"
@@ -391,10 +394,10 @@ export default function LsFight() {
             value={enemyAbility}
             onChange={handleInputChange(setEnemyAbility, "number")}
           />
-        </div>
+        </article>
       </article>
       <article className="ls-endurance-fight">
-        <div className="ls-endurance-fight-box">
+        <article className="ls-endurance-fight-box">
           <label htmlFor="endurance-fight-ls">Endurance LS</label>
           <input
             type="number"
@@ -404,8 +407,8 @@ export default function LsFight() {
             // onChange={handleInputChange(setLsEndurance, "number")}
             readOnly
           />
-        </div>
-        <div className="ls-endurance-fight-box">
+        </article>
+        <article className="ls-endurance-fight-box">
           <label htmlFor="endurance-fight-ennemy">Endurance ennemi</label>
           <input
             className="stat-ennemy"
@@ -415,7 +418,7 @@ export default function LsFight() {
             value={enemyEndurance}
             onChange={handleInputChange(setEnemyEndurance, "number")}
           />
-        </div>
+        </article>
       </article>
       <Button
         id="button-fight"
@@ -424,7 +427,9 @@ export default function LsFight() {
       >
         Combat
       </Button>
-      <p className="ls-result">Résultat de Combat</p>
+      <p className="ls-result">
+        Résultat Table de Hasard : <span>{lsHasardTable}</span>
+      </p>
       <article className="ls-result-fight">
         {lsEndurance > 0 && (
           <p className="ls-result">
@@ -455,6 +460,6 @@ export default function LsFight() {
           </p>
         )}
       </article>
-    </>
+    </section>
   );
 }

@@ -1,4 +1,8 @@
 /*  Page Combat */
+.df-title {
+  font-size: 2rem;
+  text-shadow: 1px 1px 2px red, 0 0 1em rgb(244, 244, 247);
+}
 .df-fighter {
   display: flex;
   margin-block: 1rem;
@@ -99,6 +103,7 @@
 }
 .df-chance-points {
   display: flex;
+  justify-content: center;
   gap: 1rem;
   align-items: center;
   margin-top: 0.5rem;
@@ -230,10 +235,11 @@
   height: 4rem;
   width: 4rem;
   font-size: 2rem;
+  font-weight: 700;
   text-align: center;
   margin-inline: 0.5rem 1rem;
 }
-.df-title {
+.df-subtitle {
   font-size: 1.3rem;
 }
 .df-equipment {

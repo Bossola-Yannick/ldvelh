@@ -5,8 +5,8 @@ export default function LsHasard() {
   const [number, setNumber] = UsePersistedState("random-number", 0);
 
   return (
-    <div className="ls-hasardMain">
-      <h3 className="ls-hasard-title">Prêt à faire confiance au hasard ?</h3>
+    <section className="ls-hasardMain">
+      <h3 className="df-title">Place au hasard !</h3>
       <Button
         className={"ls-hasard-button"}
         onClick={() => {
@@ -16,6 +16,6 @@ export default function LsHasard() {
         Hasard Number
       </Button>
       <p className="ls-hasard-score">{number}</p>
-    </div>
+    </section>
   );
 }

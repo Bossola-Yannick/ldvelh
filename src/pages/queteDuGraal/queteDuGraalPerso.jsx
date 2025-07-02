@@ -43,9 +43,10 @@ export default function QdGPerso() {
     setXpFight,
   ]);
   return (
-    <>
-      <div className="qdg-stats">
-        <div className="qdg-stat">
+    <section>
+      <h3 className="df-title">Ma Fiche Perso </h3>
+      <article className="qdg-stats">
+        <article className="qdg-stat">
           <label className="qdg-title" htmlFor="StartLife">
             Pts de Vie Départ
           </label>
@@ -56,8 +57,8 @@ export default function QdGPerso() {
             value={pdvStart}
             onChange={handleInputChange(setPdvStart, "number")}
           />
-        </div>
-        <div className="qdg-stat">
+        </article>
+        <article className="qdg-stat">
           <label className="qdg-title" htmlFor="currentLife">
             Pts de vie Actuelle
           </label>
@@ -68,10 +69,10 @@ export default function QdGPerso() {
             value={pdvCurrent}
             onChange={handleInputChange(setPdvCurrent, "number")}
           />
-        </div>
-      </div>
-      <div className="qdg-stats">
-        <div className="qdg-stat">
+        </article>
+      </article>
+      <article className="qdg-stats">
+        <article className="qdg-stat">
           <label className="qdg-title" htmlFor="xpFight">
             Expérience de combat
           </label>
@@ -82,8 +83,8 @@ export default function QdGPerso() {
             value={xpFight}
             onChange={handleInputChange(setXpFight, "number")}
           />
-        </div>
-        <div className="qdg-stat">
+        </article>
+        <article className="qdg-stat">
           <label className="qdg-title" htmlFor="xpFight">
             Pts de Vie Permanents
           </label>
@@ -94,9 +95,9 @@ export default function QdGPerso() {
             value={pdvPerm}
             readOnly
           />
-        </div>
-      </div>
-      <div className="qdg-equipment">
+        </article>
+      </article>
+      <section className="qdg-equipment">
         <h5 className="qdg-title">Equipments Transportés :</h5>
         <ul>
           {equipments.map((equip, i) => (
@@ -121,7 +122,7 @@ export default function QdGPerso() {
         >
           Ajouter un équipement
         </button>
-      </div>
-    </>
+      </section>
+    </section>
   );
 }

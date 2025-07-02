@@ -19,8 +19,9 @@ export default function LsNotes() {
     setNotes(notes.filter((_, i) => i !== index));
   };
   return (
-    <>
-      <div className="ls-book">
+    <section>
+      <h3 className="df-title">Mes Notes</h3>
+      <article className="ls-book">
         <label htmlFor="title-book">Titre du livre : </label>
         <input
           type="text"
@@ -29,8 +30,8 @@ export default function LsNotes() {
           value={titleBook}
           onChange={handleInputChange(setTitleBook, "text")}
         />
-      </div>
-      <div className="ls-chapter">
+      </article>
+      <article className="ls-chapter">
         <label htmlFor="chapter">Chapitre en cours :</label>
         <input
           type="number"
@@ -39,8 +40,8 @@ export default function LsNotes() {
           value={chapter}
           onChange={handleInputChange(setChapter, "number")}
         />
-      </div>
-      <div className="ls-notes">
+      </article>
+      <section className="ls-notes">
         <h5 className="ls-notes-title">Notes :</h5>
         <ul>
           {notes.map((note, i) => (
@@ -61,7 +62,7 @@ export default function LsNotes() {
         <button type="button" onClick={addNote} className="ls-note-button">
           Ajouter une note
         </button>
-      </div>
-    </>
+      </section>
+    </section>
   );
 }

@@ -19,8 +19,9 @@ export default function QdGNotes() {
     setNotes(notes.filter((_, i) => i !== index));
   };
   return (
-    <>
-      <div className="qdg-book">
+    <section>
+      <h3 className="df-title">Mes Notes</h3>
+      <article className="qdg-book">
         <label htmlFor="title-book">Titre du livre : </label>
         <input
           type="text"
@@ -29,8 +30,8 @@ export default function QdGNotes() {
           value={titleBook}
           onChange={handleInputChange(setTitleBook, "text")}
         />
-      </div>
-      <div className="qdg-chapter">
+      </article>
+      <article className="qdg-chapter">
         <label htmlFor="chapter">Chapitre en cours :</label>
         <input
           type="number"
@@ -39,8 +40,8 @@ export default function QdGNotes() {
           value={chapter}
           onChange={handleInputChange(setChapter, "number")}
         />
-      </div>
-      <div className="qdg-notes">
+      </article>
+      <section className="qdg-notes">
         <h5 className="qdg-title">Notes :</h5>
         <ul>
           {notes.map((note, i) => (
@@ -61,7 +62,7 @@ export default function QdGNotes() {
         <button type="button" onClick={addNote} className="qdg-note-button">
           Ajouter une note
         </button>
-      </div>
-    </>
+      </section>
+    </section>
   );
 }

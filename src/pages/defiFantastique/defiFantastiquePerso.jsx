@@ -41,11 +41,12 @@ export default function DfPerso() {
   };
 
   return (
-    <>
-      <div className="df-stats">
-        <div className="df-stats-list">
-          <h3 className="df-title">Habileté </h3>
-          <div className="df-stat">
+    <section>
+      <h3 className="df-title">Ma Fiche Perso</h3>
+      <article className="df-stats">
+        <section className="df-stats-list">
+          <h3 className="df-subtitle">Habileté </h3>
+          <article className="df-stat">
             <label htmlFor="startAbility">départ : </label>
             <input
               type="number"
@@ -62,11 +63,11 @@ export default function DfPerso() {
               value={dfCurrentAbility}
               onChange={handleInputChange(setDfCurrentAbility, "number")}
             />
-          </div>
-        </div>
-        <div className="df-stats-list">
-          <h3 className="df-title">Endurance </h3>
-          <div className="df-stat">
+          </article>
+        </section>
+        <section className="df-stats-list">
+          <h3 className="df-subtitle">Endurance </h3>
+          <article className="df-stat">
             <label htmlFor="startEndurance">départ : </label>
             <input
               type="number"
@@ -83,11 +84,11 @@ export default function DfPerso() {
               value={dfCurrentEndurance}
               onChange={handleInputChange(setDfCurrentEndurance, "number")}
             />
-          </div>
-        </div>
-        <div className="df-stats-list">
-          <h3 className="df-title">Chance </h3>
-          <div className="df-stat">
+          </article>
+        </section>
+        <section className="df-stats-list">
+          <h3 className="df-subtitle">Chance </h3>
+          <article className="df-stat">
             <label htmlFor="startChance">départ : </label>
             <input
               type="number"
@@ -104,31 +105,31 @@ export default function DfPerso() {
               value={dfCurrentChance}
               onChange={handleInputChange(setDfCurrentChance, "number")}
             />
-          </div>
-        </div>
-      </div>
-      <div className="df-pockets">
-        <div className="df-pocket">
+          </article>
+        </section>
+      </article>
+      <article className="df-pockets">
+        <article className="df-pocket">
           <label htmlFor="startChance">Or : </label>
           <input type="number" name="startChance" id="startChance" />
-        </div>
-        <div className="df-pocket">
+        </article>
+        <article className="df-pocket">
           <label htmlFor="startChance">Bijoux : </label>
           <input type="number" name="startChance" id="startChance" />
-        </div>
-      </div>
-      <div className="df-pockets">
-        <div className="df-pocket">
+        </article>
+      </article>
+      <article className="df-pockets">
+        <article className="df-pocket">
           <label htmlFor="startChance">Potions </label>
           <input type="number" name="startChance" id="startChance" />
-        </div>
-        <div className="df-pocket">
+        </article>
+        <article className="df-pocket">
           <label htmlFor="startChance">Provisions : </label>
           <input type="number" name="startChance" id="startChance" />
-        </div>
-      </div>
+        </article>
+      </article>
 
-      <div className="df-equipment">
+      <section className="df-equipment">
         <h5 className="df-equipment-title">Equipments Transportés :</h5>
         <ul>
           {equipments.map((equipment, i) => (
@@ -156,7 +157,7 @@ export default function DfPerso() {
         >
           Ajouter un équipement
         </button>
-      </div>
-    </>
+      </section>
+    </section>
   );
 }

@@ -19,7 +19,8 @@ export default function DfNotes() {
     setNotes(notes.filter((_, i) => i !== index));
   };
   return (
-    <>
+    <section>
+      <h3 className="df-title">Mes Notes</h3>
       <div className="df-book">
         <label htmlFor="title-book">Titre du livre : </label>
         <input
@@ -62,6 +63,6 @@ export default function DfNotes() {
           Ajouter une note
         </button>
       </div>
-    </>
+    </section>
   );
 }
