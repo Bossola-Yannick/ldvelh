@@ -21,3 +21,14 @@ export function DefiFantastique() {
     </>
   );
 }
+
+// Livre dont la feuille d'aventure est différente:
+// -  La citadelle du chaos
+// -  La galaxie tragique
+// -  Le manoir de l'enfer
+// -  Rendez vous avec la mort
+// -  l'epreuve des champions (il n'y as pas de bijoux, provision, or et potion)
+// -
+// -
+// -
+// -

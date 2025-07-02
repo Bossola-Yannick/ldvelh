@@ -10,19 +10,21 @@ export default function DfHasard() {
   const [checkOneDice, setCheckOneDice] = useState(false);
   const [dfCurrentChance, setDfCurrentChance] = UsePersistedState(
     "df-current-chance",
-    ""
+    0
   );
   const [dfMessage, setDfMessage] = useState("");
 
   function tryLuck() {
-    const luck = diceRandom(1, 6) + diceRandom(1, 6);
-    console.log(luck);
-    if (luck <= dfCurrentChance) {
-      setDfMessage("La chance vous sourit !");
-    } else {
-      setDfMessage("Malchance, subissez les conséquences !");
-    }
-    setDfCurrentChance(dfCurrentChance - 1);
+    if (dfCurrentChance > 0) {
+      const luck = diceRandom(1, 6) + diceRandom(1, 6);
+      console.log(luck);
+      if (luck <= dfCurrentChance) {
+        setDfMessage("La chance vous sourit !");
+      } else {
+        setDfMessage("Malchance, subissez les conséquences !");
+      }
+      setDfCurrentChance(dfCurrentChance - 1);
+    } else setDfMessage("Vous avez épuisé votre chance !");
   }
 
   return (
@@ -71,13 +73,13 @@ export default function DfHasard() {
         <h3>Pts de Chance restant</h3>
         <div className="df-chance-points">
           <p className="df-chance-left">{dfCurrentChance}</p>
-          {dfCurrentChance > 0 && (
-            <Button className={"df-button chance"} onClick={tryLuck}>
-              Tenter la Chance
-            </Button>
-          )}
+          {/* {dfCurrentChance > 0 && ( */}
+          <Button className={"df-button chance"} onClick={tryLuck}>
+            Tenter la Chance
+          </Button>
+          {/* )} */}
         </div>
-        <p className="luck-message">{dfMessage}</p>
+        <p className="df-luck-message">{dfMessage}</p>
       </section>
     </>
   );

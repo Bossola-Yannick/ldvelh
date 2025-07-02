@@ -28,8 +28,6 @@ export default function DfFight() {
     "df-enemy-endurance",
     ""
   );
-  // const [dice1, setDice1] = useState(1);
-  // const [dice2, setDice2] = useState(1);
   const [fighting, setFighting] = useState(false);
   const [fightingForceHero, setFightingForceHero] = UsePersistedState(
     "fighting-force-hero",
