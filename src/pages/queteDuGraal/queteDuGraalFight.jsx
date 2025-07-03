@@ -9,9 +9,9 @@ export default function QdGFight() {
   const [isCheckedEj, setIsCheckedEj] = useState(false);
   const [diceFight1, setDiceFight1] = UsePersistedState("diceFight1", 0);
   const [diceFight2, setDiceFight2] = UsePersistedState("dice2", 0);
-  const [pdvCurrent, setPdvCurrent] = UsePersistedState("current-pdv", "");
+  const [pdvCurrent, setPdvCurrent] = UsePersistedState("current-pdv", 0);
   const [xpFight, setXpFight] = UsePersistedState("xp-fight", 0);
-  const [enemyPdv, setEnemyPdv] = UsePersistedState("enemy-pdv", "");
+  const [enemyPdv, setEnemyPdv] = UsePersistedState("enemy-pdv", 0);
   const [enemyDice, setEnemyDice] = UsePersistedState("enemy-dice", 6);
   // const [resultPip, setResultPip] = UsePersistedState("result-pip", 0);
   // const [resultEnemy, setResultEnemy] = UsePersistedState("result-enemy", 0);
@@ -19,38 +19,37 @@ export default function QdGFight() {
     "",
   ]);
   const [turnFighter, setTurnFighter] = UsePersistedState("turn-fighter", "");
-  const [messageFight, setMessageFight] = UsePersistedState(
-    "message-fight",
-    ""
-  );
+  const [messageFight, setMessageFight] = useState("");
   const [resultDiceFight, setResultDiceFight] = UsePersistedState(
     "result-dice-fight",
     0
   );
   const handleFightStart = () => {
-    const Pip =
-      Math.floor(Math.random() * (6 - 1 + 1)) +
-      0 +
-      (Math.floor(Math.random() * (6 - 1 + 1)) + 1);
-    // setResultPip(Pip);
-    const Enemy =
-      Math.floor(Math.random() * (6 - 1 + 1)) +
-      0 +
-      (Math.floor(Math.random() * (6 - 1 + 1)) + 1);
-    // setResultEnemy(Enemy);
-    if (Pip >= Enemy) {
-      setOrderFighter(["pip", "enemy"]);
-      setTurnFighter("pip");
-      setMessageFight("Pip frappe en 1er !");
+    if (pdvCurrent <= 0 || enemyPdv <= 0) {
+      setMessageFight(" Les combatants ne sont pas prêt à combatre !");
     } else {
-      setOrderFighter(["enemy", "pip"]);
-      setTurnFighter("enemy");
-      setMessageFight("Adversaire frappe en 1er !");
+      const Pip =
+        Math.floor(Math.random() * (6 - 1 + 1)) +
+        0 +
+        (Math.floor(Math.random() * (6 - 1 + 1)) + 1);
+      // setResultPip(Pip);
+      const Enemy =
+        Math.floor(Math.random() * (6 - 1 + 1)) +
+        0 +
+        (Math.floor(Math.random() * (6 - 1 + 1)) + 1);
+      // setResultEnemy(Enemy);
+      if (Pip >= Enemy) {
+        setOrderFighter(["pip", "enemy"]);
+        setTurnFighter("pip");
+        setMessageFight("Pip frappe en 1er !");
+      } else {
+        setOrderFighter(["enemy", "pip"]);
+        setTurnFighter("enemy");
+        setMessageFight("Adversaire frappe en 1er !");
+      }
     }
   };
-  // const handleCheck = (e) => {
-  //   setIsCheckedEj(e.target.checked);
-  // };
+
   function turnFight(fighter) {
     const diceOne = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
     const diceTwo = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
@@ -92,18 +91,19 @@ export default function QdGFight() {
   const handleDown = (getter, setter) => {
     setter(getter - 1);
   };
+
+  // useEffect verification valeur des combatants rentré
+
+  // useEffect vérification si combatant MORT
   useEffect(() => {
-    if (pdvCurrent !== "" && enemyPdv !== "") {
-      if (pdvCurrent <= 0) {
-        setMessageFight("Pip est Mort !");
-        setOrderFighter([""]);
-      } else if (enemyPdv <= 0) {
-        setMessageFight("Adversaire est Mort !");
-        setXpFight(xpFight + 1);
-        setOrderFighter([""]);
-        setEnemyPdv(1);
-      }
-    }
+    if (pdvCurrent <= 0) {
+      setMessageFight("Pip est Mort !");
+      setOrderFighter([""]);
+    } else if (enemyPdv <= 0) {
+      setMessageFight("Adversaire est Mort !");
+      setXpFight(xpFight + 1);
+      setOrderFighter([""]);
+    } else setMessageFight("");
   }, [pdvCurrent, enemyPdv]);
 
   return (
