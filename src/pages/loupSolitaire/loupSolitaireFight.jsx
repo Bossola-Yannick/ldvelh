@@ -454,7 +454,7 @@ export default function LsFight() {
             pts de vie .
           </p>
         )}
-        {enemyEndurance <= 0 && (
+        {enemyEndurance <= 0 && enemyEndurance !== "" && (
           <p className="ls-result">
             Votre ennemi est <span className="ls-perso">MORT </span> !
           </p>

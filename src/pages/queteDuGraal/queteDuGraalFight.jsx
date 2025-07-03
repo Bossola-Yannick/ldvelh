@@ -11,7 +11,7 @@ export default function QdGFight() {
   const [diceFight2, setDiceFight2] = UsePersistedState("dice2", 0);
   const [pdvCurrent, setPdvCurrent] = UsePersistedState("current-pdv", "");
   const [xpFight, setXpFight] = UsePersistedState("xp-fight", 0);
-  const [enemyPdv, setEnemyPdv] = UsePersistedState("enemy-pdv", 1);
+  const [enemyPdv, setEnemyPdv] = UsePersistedState("enemy-pdv", "");
   const [enemyDice, setEnemyDice] = UsePersistedState("enemy-dice", 6);
   // const [resultPip, setResultPip] = UsePersistedState("result-pip", 0);
   // const [resultEnemy, setResultEnemy] = UsePersistedState("result-enemy", 0);
@@ -93,14 +93,16 @@ export default function QdGFight() {
     setter(getter - 1);
   };
   useEffect(() => {
-    if (pdvCurrent <= 0) {
-      setMessageFight("Pip est Mort !");
-      setOrderFighter([""]);
-    } else if (enemyPdv <= 0) {
-      setMessageFight("Adversaire est Mort !");
-      setXpFight(xpFight + 1);
-      setOrderFighter([""]);
-      setEnemyPdv(1);
+    if (pdvCurrent !== "" && enemyPdv !== "") {
+      if (pdvCurrent <= 0) {
+        setMessageFight("Pip est Mort !");
+        setOrderFighter([""]);
+      } else if (enemyPdv <= 0) {
+        setMessageFight("Adversaire est Mort !");
+        setXpFight(xpFight + 1);
+        setOrderFighter([""]);
+        setEnemyPdv(1);
+      }
     }
   }, [pdvCurrent, enemyPdv]);
 
@@ -184,14 +186,6 @@ export default function QdGFight() {
           <Button className={"button-fight"} onClick={handleFightStart}>
             Qui commence ?
           </Button>
-          {/* <div className="qdg-dice-box">
-            <div className="qdg-dice" id="dice-1">
-              <p className="qdg-dice-result">{resultPip}</p>
-            </div>
-            <div className="qdg-dice" id="dice-2">
-              <p className="qdg-dice-result">{resultEnemy}</p>
-            </div>
-          </div> */}
         </>
       )}
       {orderFighter[0] != "" && (
