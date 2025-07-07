@@ -1,13 +1,12 @@
-import React, { useContext } from "react";
 import { useEffect } from "react";
-import { UserContext } from "../contexts/UserContext";
 import "./login-subscribe.css";
 import Button from "../components/Button/button";
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
 import { UsePersistedState } from "../hooks/usePersistedState";
 
 export default function Connection() {
-  const [user, setUser] = useContext(UserContext);
+  // eslint-disable-next-line
+  const [user, setUser] = UsePersistedState("user", "");
   const [loggedIn, setLoggedIn] = UsePersistedState("user-login", false);
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -15,7 +14,7 @@ export default function Connection() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    const response = await fetch("http://localhost/ldvelh/api/login", {
+    const response = await fetch("http://localhost/api-ldvelh/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -39,13 +38,13 @@ export default function Connection() {
   useEffect(() => {
     if (loggedIn) {
       // Redirige vers la page accueil si l'utilisateur est connecté
-      navigate("/accueil");
+      navigate("/");
     }
   }, [loggedIn, navigate]);
 
   return (
     <section className="connection">
-      <h1 className="connection-title">Connexion</h1>
+      <h1 className="login-title">Connexion</h1>
       <form onSubmit={handleSubmit} id="form-connection">
         <label htmlFor="email">Votre Email</label>
         <input type="email" name="email" id="email" />
