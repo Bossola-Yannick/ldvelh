@@ -10,7 +10,7 @@ export default function DfNotes() {
     newNotes[index] = e.target.value;
     setNotes(newNotes);
   };
-  // ajouter une nouvelle note
+  // ajouter un input pour rentrer une nouvelle note
   const addNote = () => {
     setNotes([...notes, ""]);
   };
