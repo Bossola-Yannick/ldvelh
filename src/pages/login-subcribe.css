@@ -1,0 +1,74 @@
+.connection,
+.registration {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2rem;
+}
+#form-connection,
+#form-registration {
+  width: 45%;
+  min-height: 20rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: 700;
+  background-color: var(--hover-color);
+  border-radius: 1.25rem;
+}
+#form-connection input,
+#form-registration input {
+  width: 70%;
+  padding: 0.5rem;
+}
+.subtitle-registration {
+  color: var(--active-color);
+  /* font-family: var(--title-font); */
+  font-size: 2rem;
+  padding-block: 0.7rem;
+}
+#status-registration,
+#emailError,
+#passwordError,
+#identiquePasswordError,
+#codePostalError {
+  padding: 0.2rem;
+}
+.message-error {
+  color: red;
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+.button-registration {
+  width: 40%;
+  margin-block: 2rem;
+  font-size: 1.4rem;
+}
+.button-registration:hover {
+  color: var(--primary-color);
+  background-color: aliceblue;
+}
+.registration-title,
+.connection-title {
+  color: var(--text-color);
+  text-align: center;
+}
+.text-info {
+  color: var(--text-color);
+  text-align: center;
+}
+.error-message {
+  visibility: hidden;
+}
+#connection-message {
+  color: var(--error-color);
+  background-color: rgba(236, 155, 155, 0.596);
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}

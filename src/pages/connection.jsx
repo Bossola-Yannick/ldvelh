@@ -1,13 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
-import "./connection-inscription.css";
+import "./login-subscribe.css";
 import Button from "../components/Button/button";
 import { BrowserRouter as Router, Link, useNavigate } from "react-router-dom";
+import { UsePersistedState } from "../hooks/usePersistedState";
 
 export default function Connection() {
   const [user, setUser] = useContext(UserContext);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = UsePersistedState("user-login", false);
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,11 +37,11 @@ export default function Connection() {
     }
   };
   useEffect(() => {
-    if (user) {
-      // Redirige vers la page profil si l'utilisateur est connecté
+    if (loggedIn) {
+      // Redirige vers la page accueil si l'utilisateur est connecté
       navigate("/accueil");
     }
-  }, [user, navigate]);
+  }, [loggedIn, navigate]);
 
   return (
     <section className="connection">
