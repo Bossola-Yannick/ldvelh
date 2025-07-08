@@ -1,11 +1,18 @@
 import { UsePersistedState } from "../hooks/usePersistedState";
 import Card from "../components/Card/card";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 export function Profil() {
   const [adventure, setAdventure] = UsePersistedState("user-adventures", {});
   const [user] = UsePersistedState("user", "");
+  // eslint-disable-next-line
+  const [idAdventure, setIdAdventure] = UsePersistedState(
+    "id-adventure-select",
+    ""
+  );
+  const navigate = useNavigate;
+  // récupération des aventures de l'user via son ID
   useEffect(() => {
     const adventureList = async () => {
       try {
@@ -31,12 +38,18 @@ export function Profil() {
     };
     adventureList();
   }, [user, setAdventure]);
+  // permet de transformé le nom de la table d'aventure dans le format désiré pour la nivigation
   const categoryPaths = {
     lone_wolf: "loup-solitaire",
     quete_graal: "quete-du-graal",
     defis_fantastiques: "defi-fantastique",
   };
-
+  const handleCardSelect = (id, pathCategory) => {
+    // recupération de l'id
+    setIdAdventure(id);
+    // redirection vers la page aventure correspondante
+    navigate(`/${pathCategory}`);
+  };
   return (
     <>
       <h1 className="title-homepage">
@@ -47,16 +60,12 @@ export function Profil() {
         adventures.map((aventure) => {
           const pathCategory = categoryPaths[categoryKey];
           return (
-            <Link
-              key={`${categoryKey}-${aventure.id}`}
-              to={`/${pathCategory}/`} // penser à mettre l'id de l'aventure
-            >
-              <Card
-                name={aventure.title}
-                adventure={pathCategory}
-                id={aventure.id.toString()}
-              />
-            </Link>
+            <Card
+              name={aventure.title}
+              adventure={pathCategory}
+              id={aventure.id.toString()}
+              onClick={() => handleCardSelect(aventure.id, pathCategory)}
+            />
           );
         })
       )}
