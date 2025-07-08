@@ -38,7 +38,7 @@ export default function Connection() {
   useEffect(() => {
     if (loggedIn) {
       // Redirige vers la page accueil si l'utilisateur est connecté
-      navigate("/");
+      navigate("/profil");
     }
   }, [loggedIn, navigate]);
 

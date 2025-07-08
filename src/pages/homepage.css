@@ -1,5 +1,25 @@
 .title-homepage {
   font-size: 1.7rem;
-  font-weight: 800;
   margin-block: 2rem;
+}
+.profil-link {
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+  background-image: url(../../public/images/parcheminFini.webp);
+  background-size: cover;
+  background-position: center;
+}
+.login-link {
+  width: 50%;
+  margin: 1rem auto;
+  background-image: url(../../public/images/parcheminFini.webp);
+  background-size: cover;
+  background-position: center;
+  font-size: 1.3rem;
+  padding: 0.3rem;
+}
+.newAdventure-link {
+  width: 60%;
 }

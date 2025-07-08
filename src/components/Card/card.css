@@ -10,6 +10,10 @@
   justify-content: center;
 }
 .card-name {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.7rem;
+  font-weight: 500;
+}
+.adventure {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
 }
