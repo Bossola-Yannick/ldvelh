@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  cursor: pointer;
 }
 .card-name {
   font-size: 1.7rem;

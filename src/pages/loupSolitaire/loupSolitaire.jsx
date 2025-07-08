@@ -17,7 +17,7 @@ export function LoupSolitaire() {
       try {
         const idAdventure = adventureId;
         const response = await fetch(
-          `http://localhost/api-ldvelh/api/getalladventurebyuser?userId=${idAdventure}`,
+          `http://localhost/api-ldvelh/api/lonewolf/getadventurebyid?adventureId=${idAdventure}`,
           {
             method: "GET",
             headers: { "Content-Type": "application/json" },
@@ -36,7 +36,7 @@ export function LoupSolitaire() {
       }
     };
     adventureList();
-  }, [adventure, setAdventure]);
+  }, [adventureId]);
   return (
     <>
       <LsNav />

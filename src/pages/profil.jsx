@@ -11,7 +11,7 @@ export function Profil() {
     "id-adventure-select",
     ""
   );
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   // récupération des aventures de l'user via son ID
   useEffect(() => {
     const adventureList = async () => {
