@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 export function Profil() {
-  const [adventure, setAdventure] = UsePersistedState("user-adventures", {});
+  const [adventure, setAdventure] = UsePersistedState("user-adventures", []);
   const [user] = UsePersistedState("user", "");
   // eslint-disable-next-line
   const [idAdventure, setIdAdventure] = UsePersistedState(
